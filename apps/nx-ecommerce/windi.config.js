@@ -1,8 +1,3 @@
-import { defineConfig } from 'windicss/helpers';
+import config from '../../windi.config';
 
-export default defineConfig({
-  extract: {
-    include: ['**/*.{jsx,tsx,css}'],
-    exclude: ['node_modules', '.git', '.next'],
-  },
-});
+export default config;
