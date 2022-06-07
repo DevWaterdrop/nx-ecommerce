@@ -1,0 +1,28 @@
+{
+  "root": "apps/nx-ecommerce-e2e",
+  "sourceRoot": "apps/nx-ecommerce-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/nx-ecommerce-e2e/cypress.json",
+        "devServerTarget": "nx-ecommerce:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "nx-ecommerce:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/nx-ecommerce-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["nx-ecommerce"]
+}

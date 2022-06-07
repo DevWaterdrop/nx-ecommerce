@@ -1,0 +1,54 @@
+{
+  "root": "apps/nx-ecommerce",
+  "sourceRoot": "apps/nx-ecommerce",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/nx-ecommerce",
+        "outputPath": "dist/apps/nx-ecommerce"
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "nx-ecommerce:build",
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "nx-ecommerce:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "nx-ecommerce:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/nx-ecommerce"],
+      "options": {
+        "jestConfig": "apps/nx-ecommerce/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/nx-ecommerce/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

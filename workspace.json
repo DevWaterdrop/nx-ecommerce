@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "nx-ecommerce": "apps/nx-ecommerce",
+    "nx-ecommerce-e2e": "apps/nx-ecommerce-e2e"
+  }
+}
