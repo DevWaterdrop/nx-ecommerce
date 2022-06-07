@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "nx-ecommerce": "apps/nx-ecommerce",
-    "nx-ecommerce-e2e": "apps/nx-ecommerce-e2e"
+    "nx-ecommerce-e2e": "apps/nx-ecommerce-e2e",
+    "shared-ui": "libs/shared/ui",
+    "shared-ui-e2e": "apps/shared-ui-e2e"
   }
 }
