@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-ecommerce/shared/ui": ["libs/shared/ui/src/index.ts"]
+      "@nx-ecommerce/shared/ui/*": ["libs/shared/ui/src/lib/*"]
     },
     "strict": true,
     "forceConsistentCasingInFileNames": true
