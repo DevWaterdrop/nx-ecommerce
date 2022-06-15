@@ -58,7 +58,7 @@ export function ItemCard(props: ItemCardProps) {
   return (
     <li
       className={clsx(
-        'relative min-w-48 list-none',
+        'relative list-none',
         size === 'base' ? 'w-60' : false,
         size === 'lg' ? 'w-72' : false,
         size === 'parent' ? 'w-full h-full' : false
@@ -74,7 +74,8 @@ export function ItemCard(props: ItemCardProps) {
           <div
             className={clsx(
               'relative w-full object-cover mb-2',
-              size === 'base' || size === 'parent' ? 'h-72' : false,
+              size === 'parent' ? 'aspect-square' : false,
+              size === 'base' ? 'h-72' : false,
               size === 'lg' ? 'h-80' : false
             )}
           >
@@ -83,6 +84,7 @@ export function ItemCard(props: ItemCardProps) {
               alt={item.name}
               layout="fill"
               placeholder="blur"
+              objectFit="cover"
             />
             {item.images[1] && (
               <div
@@ -97,13 +99,15 @@ export function ItemCard(props: ItemCardProps) {
                   data-testid="second-image"
                   src={item.images[1]}
                   alt=""
+                  layout="fill"
                   placeholder="blur"
+                  objectFit="cover"
                 />
               </div>
             )}
           </div>
           {item.tag && (
-            <span className="text-orange-400 font-medium capitalize">
+            <span className="font-medium text-orange-400 capitalize">
               {item.tag}
             </span>
           )}
@@ -120,7 +124,7 @@ export function ItemCard(props: ItemCardProps) {
       <div>
         <a className="flex flex-col" href={href} title={createLabel(item)}>
           <span className="text-sm">{item.smallDescription}</span>
-          <span className="text-xl font-bold mt-2">{price}</span>
+          <span className="font-bold mt-2 text-xl">{price}</span>
         </a>
         <button
           className={clsx(
@@ -133,7 +137,7 @@ export function ItemCard(props: ItemCardProps) {
           type="button"
           onClick={handleClick}
         >
-          <div className="relative w-6 h-6" aria-hidden="true">
+          <div className="h-6 w-6 relative" aria-hidden="true">
             <Image src={shoppingCartSVG} layout="fill" />
           </div>
         </button>
