@@ -16,6 +16,7 @@ export function createConfig(includeOptions = []) {
       include,
       exclude: ['node_modules', '.git', '.next'],
     },
+    plugins: [require('windicss/plugin/aspect-ratio')],
   });
 }
 
