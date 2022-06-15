@@ -1,12 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import shoppingCartSVG from '../../assets/icons/shopping-cart.svg';
 import { formatPrice } from '@nx-ecommerce/shared/utils/format-price';
+import { handleBlur } from '@nx-ecommerce/shared/utils/handle-blur';
+import { createItemHref } from '@nx-ecommerce/shared/utils/create-item-href';
 
 type Tags = 'new';
 
-type Item = {
+export type Item = {
   id: string;
   price: number;
   name: string;
@@ -41,19 +43,7 @@ export function ItemCard(props: ItemCardProps) {
 
   const price = useMemo(() => formatPrice(item.price), [item.price]);
   const hovered = useMemo(() => focus || hover, [focus, hover]);
-  const href = useMemo(() => `/${item.id}`, [item.id]);
-
-  const handleBlur = (e: React.FocusEvent<HTMLElement, Element>) => {
-    const currentTarget = e.currentTarget;
-
-    // Give browser time to focus the next element
-    requestAnimationFrame(() => {
-      // Check if the new focused element is a child of the original container
-      if (!currentTarget.contains(document.activeElement)) {
-        setFocusHover((prev) => ({ ...prev, focus: false }));
-      }
-    });
-  };
+  const href = useMemo(() => createItemHref(item.id), [item.id]);
 
   return (
     <li
@@ -67,7 +57,11 @@ export function ItemCard(props: ItemCardProps) {
       onMouseOver={() => setFocusHover((prev) => ({ ...prev, hover: true }))}
       onMouseLeave={() => setFocusHover((prev) => ({ ...prev, hover: false }))}
       onFocus={() => setFocusHover((prev) => ({ ...prev, focus: true }))}
-      onBlur={handleBlur}
+      onBlur={(e) => {
+        handleBlur(e)(
+          () => void setFocusHover((prev) => ({ ...prev, focus: false }))
+        );
+      }}
     >
       <a href={href} title={item.name}>
         <figure>

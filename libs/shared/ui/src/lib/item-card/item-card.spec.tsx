@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import ItemCard, { createLabel } from './item-card';
-import { DEFAULT_PROPS } from './constants';
+import { DEFAULT_PROPS } from '../../props/constants';
 import { formatPrice } from '@nx-ecommerce/shared/utils/format-price';
 
 describe('ItemCard', () => {

@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@nx-ecommerce/shared/ui/*": ["libs/shared/ui/src/lib/*"],
+      "@nx-ecommerce/shared/ui-props/*": ["libs/shared/ui/src/props/*"],
       "@nx-ecommerce/shared/utils/*": ["libs/shared/utils/src/lib/*"]
     },
     "strict": true,
