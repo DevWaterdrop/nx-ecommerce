@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import { ITEM } from '../../props/constants';
-import SearchbarItem, { SearchbarItemProps } from './searchbar-item';
+import { SearchbarItem, SearchbarItemProps } from './searchbar-item';
 
 export default {
   component: SearchbarItem,

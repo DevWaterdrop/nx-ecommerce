@@ -1,13 +1,12 @@
 import Image from 'next/image';
-import { Item } from '../item-card/item-card';
+import { Item } from '../item-card';
 import { createItemHref } from '@nx-ecommerce/shared/utils/create-item-href';
 
-/* eslint-disable-next-line */
 export interface SearchbarItemProps {
   item: Item;
 }
 
-export function SearchbarItem(props: SearchbarItemProps) {
+export const SearchbarItem: React.FC<SearchbarItemProps> = (props) => {
   const { item } = props;
 
   return (
@@ -34,6 +33,4 @@ export function SearchbarItem(props: SearchbarItemProps) {
       </a>
     </li>
   );
-}
-
-export default SearchbarItem;
+};

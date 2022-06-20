@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
-import shoppingCartSVG from '../../assets/icons/shopping-cart.svg';
 import { formatPrice } from '@nx-ecommerce/shared/utils/format-price';
 import { handleBlur } from '@nx-ecommerce/shared/utils/handle-blur';
 import { createItemHref } from '@nx-ecommerce/shared/utils/create-item-href';
+import { Button } from '../button';
+import { Icon } from '../icon';
 
 type Tags = 'new';
 
@@ -20,12 +21,14 @@ export type Item = {
 /* eslint-disable-next-line */
 export interface ItemCardProps {
   item: Item;
-  handleClick: () => void;
+  handleCartClick: () => void;
+  handleFavoriteClick: () => void;
   size?: typeof SIZES[number];
   elementProps?: JSX.IntrinsicElements['li'];
+  loadingFavorite?: boolean;
 }
 
-export const SIZES = ['base', 'lg', 'parent'] as const;
+const SIZES = ['base', 'lg', 'parent'] as const;
 
 export function createLabel(item: Item) {
   const { name, smallDescription, price } = item;
@@ -33,8 +36,15 @@ export function createLabel(item: Item) {
   return `${name}, ${smallDescription}, price: ${price}`;
 }
 
-export function ItemCard(props: ItemCardProps) {
-  const { item, elementProps, size = 'parent', handleClick } = props;
+export const ItemCard: React.FC<ItemCardProps> = (props) => {
+  const {
+    item,
+    elementProps,
+    size = 'parent',
+    handleCartClick,
+    handleFavoriteClick,
+    loadingFavorite,
+  } = props;
 
   const [{ hover, focus }, setFocusHover] = useState({
     focus: false,
@@ -48,7 +58,7 @@ export function ItemCard(props: ItemCardProps) {
   return (
     <li
       className={clsx(
-        'relative list-none',
+        'relative list-none flex flex-col',
         size === 'base' ? 'w-60' : false,
         size === 'lg' ? 'w-72' : false,
         size === 'parent' ? 'w-full h-full' : false
@@ -63,81 +73,93 @@ export function ItemCard(props: ItemCardProps) {
         );
       }}
     >
-      <a href={href} title={item.name}>
-        <figure>
-          <div
-            className={clsx(
-              'relative w-full object-cover mb-2',
-              size === 'parent' ? 'aspect-square' : false,
-              size === 'base' ? 'h-72' : false,
-              size === 'lg' ? 'h-80' : false
-            )}
-          >
-            <Image
-              src={item.images[0]}
-              alt={item.name}
-              layout="fill"
-              placeholder="blur"
-              objectFit="cover"
-            />
-            {item.images[1] && (
-              <div
-                className={clsx(
-                  'absolute left-0 top-0 h-full w-full transition-opacity',
-                  hovered ? 'opacity-100' : 'opacity-0'
-                )}
-                aria-hidden="true"
+      <a className="mb-1" href={href} title={createLabel(item)}>
+        <div
+          className={clsx(
+            'relative w-full object-cover mb-2',
+            size === 'parent' ? 'aspect-square' : false,
+            size === 'base' ? 'h-72' : false,
+            size === 'lg' ? 'h-80' : false
+          )}
+        >
+          <Image
+            src={item.images[0]}
+            alt={item.name}
+            layout="fill"
+            placeholder="blur"
+            objectFit="cover"
+          />
+          {item.images[1] && (
+            <div
+              className={clsx(
+                'absolute left-0 top-0 h-full w-full transition-opacity',
+                hovered ? 'opacity-100' : 'opacity-0'
+              )}
+              aria-hidden="true"
+              data-testid="second-image"
+            >
+              <Image
                 data-testid="second-image"
-              >
-                <Image
-                  data-testid="second-image"
-                  src={item.images[1]}
-                  alt=""
-                  layout="fill"
-                  placeholder="blur"
-                  objectFit="cover"
-                />
-              </div>
-            )}
-          </div>
+                src={item.images[1]}
+                alt=""
+                layout="fill"
+                placeholder="blur"
+                objectFit="cover"
+              />
+            </div>
+          )}
+        </div>
+        <div className="flex flex-col gap-1">
           {item.tag && (
-            <span className="font-medium text-orange-400 capitalize">
+            <span className="font-medium text-sm text-orange-400 capitalize sm:(text-base)">
               {item.tag}
             </span>
           )}
-          <figcaption
+          <span
             className={clsx(
-              `text-base font-semibold uppercase`,
+              `text-sm font-semibold uppercase sm:(text-base)`,
               hovered ? 'underline' : false
             )}
           >
             {item.name}
-          </figcaption>
-        </figure>
+          </span>
+          <span className="text-xs sm:(text-sm max-w-3/5) ">
+            {item.smallDescription}
+          </span>
+          <span className="font-bold text-md sm:(text-xl)">{price}</span>
+        </div>
       </a>
-      <div>
-        <a className="flex flex-col" href={href} title={createLabel(item)}>
-          <span className="text-sm">{item.smallDescription}</span>
-          <span className="font-bold mt-2 text-xl">{price}</span>
-        </a>
-        <button
-          className={clsx(
-            'cursor-pointer absolute flex items-center justify-center p-3',
-            'right-0 bottom-0 bg-sky-600 rounded-full transition',
-            'hover:(bg-sky-700)',
-            !hovered ? 'opacity-0' : false
+      <div className="flex gap-2 md:(absolute right-0 bottom-0) ">
+        <Button
+          classes={clsx(
+            'flex items-center',
+            !hovered ? 'sm:(opacity-0)' : false
           )}
-          title="add to basket"
-          type="button"
-          onClick={handleClick}
+          tag="button"
+          elProps={{
+            onClick: handleCartClick,
+            title: 'add to cart',
+            type: 'button',
+          }}
         >
-          <div className="h-6 w-6 relative" aria-hidden="true">
-            <Image src={shoppingCartSVG} layout="fill" />
-          </div>
-        </button>
+          <Icon icon="cart" size="sm" />
+        </Button>
+        <Button
+          classes={clsx(
+            'flex items-center',
+            !hovered ? 'sm:(opacity-0)' : false
+          )}
+          tag="button"
+          type="transparent"
+          elProps={{
+            onClick: handleFavoriteClick,
+            title: 'add to favorite',
+            type: 'button',
+          }}
+        >
+          <Icon icon="heart" loading={loadingFavorite} size="sm" />
+        </Button>
       </div>
     </li>
   );
-}
-
-export default ItemCard;
+};

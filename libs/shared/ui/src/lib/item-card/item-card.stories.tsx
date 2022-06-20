@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { DEFAULT_PROPS } from '../../props/constants';
+import { ITEM_CARD_DEFAULT_PROPS } from '../../props/constants';
 import { ItemCard, ItemCardProps } from './item-card';
 
 export default {
@@ -10,4 +10,4 @@ export default {
 const Template: Story<ItemCardProps> = (args) => <ItemCard {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = DEFAULT_PROPS;
+Primary.args = ITEM_CARD_DEFAULT_PROPS;

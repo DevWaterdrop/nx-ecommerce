@@ -1,6 +1,6 @@
 import { ITEM } from '../../props/constants';
 import { render, screen } from '@testing-library/react';
-import SearchbarItem from './searchbar-item';
+import { SearchbarItem } from './searchbar-item';
 
 describe('SearchbarItem', () => {
   let element: HTMLElement;

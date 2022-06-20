@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import Searchbar, { SearchbarProps } from './searchbar';
+import { Searchbar, SearchbarProps } from './searchbar';
 
 describe('Searchbar', () => {
   let renderResult: ReturnType<typeof render>;

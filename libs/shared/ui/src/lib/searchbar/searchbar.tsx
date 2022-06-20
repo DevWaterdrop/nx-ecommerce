@@ -4,10 +4,9 @@ import xSVG from '../../assets/icons/x.svg';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { handleBlur } from '@nx-ecommerce/shared/utils/handle-blur';
-import { Item } from '../item-card/item-card';
-import SearchbarItem from '../searchbar-item/searchbar-item';
+import { Item } from '../item-card';
+import { SearchbarItem } from '../searchbar-item';
 
-/* eslint-disable-next-line */
 export interface SearchbarProps {
   input: string;
   items: Item[];
@@ -16,13 +15,13 @@ export interface SearchbarProps {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function Searchbar(props: SearchbarProps) {
+export const Searchbar: React.FC<SearchbarProps> = (props: SearchbarProps) => {
   const { handleClear, handleSubmit, handleInput, input, items } = props;
 
   const [focus, setFocus] = useState(false);
 
   return (
-    <div className="w-full z-10 relative">
+    <div className="w-full z-50 relative">
       <form
         className="flex bg-gray-100 rounded-3xl w-full items-center relative"
         role="search"
@@ -99,6 +98,4 @@ export function Searchbar(props: SearchbarProps) {
       )}
     </div>
   );
-}
-
-export default Searchbar;
+};

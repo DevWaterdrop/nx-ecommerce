@@ -1,13 +1,13 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import ItemCard, { createLabel } from './item-card';
-import { DEFAULT_PROPS } from '../../props/constants';
+import { ItemCard, createLabel } from './item-card';
+import { ITEM_CARD_DEFAULT_PROPS } from '../../props/constants';
 import { formatPrice } from '@nx-ecommerce/shared/utils/format-price';
 
 describe('ItemCard', () => {
   let element: HTMLElement;
-  const props = DEFAULT_PROPS;
+  const props = ITEM_CARD_DEFAULT_PROPS;
 
   beforeEach(() => {
     const { baseElement } = render(<ItemCard {...props} />);
@@ -47,8 +47,13 @@ describe('ItemCard', () => {
     const figcaption = screen.getByText(name);
     expect(figcaption).not.toHaveClass('underline');
 
-    const button = screen.getByRole('button');
-    expect(button).toHaveClass('opacity-0');
+    const buttonCart = screen.getByRole('button', { name: 'add to cart' });
+    expect(buttonCart).toHaveClass('sm:(opacity-0)');
+
+    const buttonFavorite = screen.getByRole('button', {
+      name: 'add to favorite',
+    });
+    expect(buttonFavorite).toHaveClass('sm:(opacity-0)');
 
     const secondImage = screen.getByTestId('second-image');
     expect(secondImage).toHaveClass('opacity-0');
@@ -56,7 +61,8 @@ describe('ItemCard', () => {
     fireEvent.mouseOver(container);
 
     expect(figcaption).toHaveClass('underline');
-    expect(button).not.toHaveClass('opacity-0');
+    expect(buttonCart).not.toHaveClass('sm:(opacity-0)');
+    expect(buttonFavorite).not.toHaveClass('sm:(opacity-0)');
     expect(secondImage).toHaveClass('opacity-100');
   });
 });
