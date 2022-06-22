@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_home_page_hero_categories",
+  "info": {
+    "displayName": "hero-categories",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    }
+  }
+}

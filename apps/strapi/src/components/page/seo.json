@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_page_seos",
+  "info": {
+    "displayName": "seo",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string",
+      "required": true
+    },
+    "metaDescription": {
+      "type": "string"
+    },
+    "meta": {
+      "displayName": "meta",
+      "type": "component",
+      "repeatable": true,
+      "component": "page.meta"
+    },
+    "metaImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
