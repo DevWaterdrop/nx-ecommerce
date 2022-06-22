@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fast_users",
+  "info": {
+    "singularName": "fast-user",
+    "pluralName": "fast-users",
+    "displayName": "FastUser"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "token": {
+      "type": "uid",
+      "required": true,
+      "minLength": 40
+    }
+  }
+}
