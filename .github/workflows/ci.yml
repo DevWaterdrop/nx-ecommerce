@@ -4,6 +4,10 @@ on:
     branches:
       - main
   pull_request:
+env:
+  APP_KEYS: 1,2,3,4
+  API_TOKEN_SALT: 5
+  ADMIN_JWT_SECRET: 6
 
 jobs:
   main:
