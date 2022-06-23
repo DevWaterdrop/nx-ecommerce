@@ -38,6 +38,21 @@
       "options": {
         "commands": [
           {
+            "command": "cd apps/strapi && npm ci --force && npm run build"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "production": true
+        }
+      }
+    },
+    "build-naked": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
             "command": "cd apps/strapi && npm run build"
           }
         ]
