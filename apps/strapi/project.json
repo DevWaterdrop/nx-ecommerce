@@ -3,11 +3,45 @@
   "projectType": "application",
   "sourceRoot": "apps/strapi/src",
   "targets": {
-    "serve": {
-      "executor": "@nx-extend/strapi:serve"
+    "install": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd apps/strapi && npm ci --force"
+          }
+        ]
+      }
+    },
+    "develop": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd apps/strapi && npm run develop"
+          }
+        ]
+      }
+    },
+    "start": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd apps/strapi && npm run start"
+          }
+        ]
+      }
     },
     "build": {
-      "executor": "@nx-extend/strapi:build",
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "cd apps/strapi && npm run build"
+          }
+        ]
+      },
       "configurations": {
         "production": {
           "production": true
