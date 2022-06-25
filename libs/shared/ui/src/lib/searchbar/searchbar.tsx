@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { handleBlur } from '@nx-ecommerce/shared/utils/handle-blur';
 import { Item } from '../item-card';
 import { SearchbarItem } from '../searchbar-item';
+import { Icon } from '../icon';
 
 export interface SearchbarProps {
   input: string;
@@ -13,10 +14,12 @@ export interface SearchbarProps {
   handleClear: () => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  loading: boolean;
 }
 
 export const Searchbar: React.FC<SearchbarProps> = (props: SearchbarProps) => {
-  const { handleClear, handleSubmit, handleInput, input, items } = props;
+  const { handleClear, handleSubmit, handleInput, input, items, loading } =
+    props;
 
   const [focus, setFocus] = useState(false);
 
@@ -59,8 +62,12 @@ export const Searchbar: React.FC<SearchbarProps> = (props: SearchbarProps) => {
           )}
           data-testid="search-controls"
         >
+          <Icon loading={true} classes={clsx(!loading && 'hidden')} />
           <button
-            className="flex h-4 w-4 items-center relative"
+            className={clsx(
+              'flex h-4 w-4 items-center relative',
+              loading && 'hidden'
+            )}
             type="button"
             title="clear input"
             onClick={handleClear}
