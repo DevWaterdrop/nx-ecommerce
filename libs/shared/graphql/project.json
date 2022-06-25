@@ -2,14 +2,5 @@
   "root": "libs/shared/graphql",
   "sourceRoot": "libs/shared/graphql/src",
   "projectType": "library",
-  "targets": {
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/shared/graphql/**/*.ts"]
-      }
-    }
-  },
   "tags": []
 }
