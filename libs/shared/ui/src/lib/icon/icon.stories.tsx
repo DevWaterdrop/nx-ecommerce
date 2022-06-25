@@ -1,3 +1,4 @@
+import { ICON_DEFAULT_PROPS } from '../../props/constants';
 import { Story, Meta } from '@storybook/react';
 import { Icon, IconProps } from './icon';
 
@@ -9,4 +10,4 @@ export default {
 const Template: Story<IconProps> = (args) => <Icon {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = ICON_DEFAULT_PROPS;
