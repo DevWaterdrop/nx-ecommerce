@@ -1,3 +1,5 @@
+import { GraphQLClient } from 'graphql-request';
+import { RequestInit } from 'graphql-request/dist/types.dom';
 import { useQuery, UseQueryOptions } from 'react-query';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -5,24 +7,8 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 
-function fetcher<TData, TVariables>(endpoint: string, requestInit: RequestInit, query: string, variables?: TVariables) {
-  return async (): Promise<TData> => {
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      ...requestInit,
-      body: JSON.stringify({ query, variables }),
-    });
-
-    const json = await res.json();
-
-    if (json.errors) {
-      const { message } = json.errors[0];
-
-      throw new Error(message);
-    }
-
-    return json.data;
-  }
+function fetcher<TData, TVariables>(client: GraphQLClient, query: string, variables?: TVariables, headers?: RequestInit['headers']) {
+  return async (): Promise<TData> => client.request<TData, TVariables>(query, variables, headers);
 }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -1451,12 +1437,13 @@ export const useSearchbarSearchQuery = <
       TData = SearchbarSearchQuery,
       TError = unknown
     >(
-      dataSource: { endpoint: string, fetchParams?: RequestInit },
+      client: GraphQLClient,
       variables?: SearchbarSearchQueryVariables,
-      options?: UseQueryOptions<SearchbarSearchQuery, TError, TData>
+      options?: UseQueryOptions<SearchbarSearchQuery, TError, TData>,
+      headers?: RequestInit['headers']
     ) =>
     useQuery<SearchbarSearchQuery, TError, TData>(
       variables === undefined ? ['searchbarSearch'] : ['searchbarSearch', variables],
-      fetcher<SearchbarSearchQuery, SearchbarSearchQueryVariables>(dataSource.endpoint, dataSource.fetchParams || {}, SearchbarSearchDocument, variables),
+      fetcher<SearchbarSearchQuery, SearchbarSearchQueryVariables>(client, SearchbarSearchDocument, variables, headers),
       options
     );

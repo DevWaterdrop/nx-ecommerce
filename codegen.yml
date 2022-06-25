@@ -7,6 +7,8 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-react-query'
+    config:
+      fetcher: graphql-request
   ./graphql.schema.json:
     plugins:
       - 'introspection'
