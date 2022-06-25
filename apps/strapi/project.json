@@ -42,10 +42,9 @@
           }
         ]
       },
+      "defaultConfiguration": "production",
       "configurations": {
-        "production": {
-          "production": true
-        }
+        "production": {}
       }
     },
     "build-naked": {
@@ -57,10 +56,9 @@
           }
         ]
       },
+      "defaultConfiguration": "production",
       "configurations": {
-        "production": {
-          "production": true
-        }
+        "production": {}
       }
     }
   },
