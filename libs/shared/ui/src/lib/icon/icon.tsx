@@ -30,7 +30,7 @@ export const Icon: React.FC<IconProps> = (props: IconProps) => {
   return (
     <div
       className={clsx(
-        'relative select-none pointer-events-none items-center',
+        'flex relative select-none pointer-events-none items-center',
         // SIZES
         size === 'sm' ? 'h-4 w-4  sm:(h-6 w-6)' : false,
         size === 'base' ? 'h-5 w-5' : false,
