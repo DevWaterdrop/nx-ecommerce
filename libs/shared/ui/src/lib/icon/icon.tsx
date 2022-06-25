@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import { Spinner } from './components/spinner';
 
 export interface IconProps {
-  icon: keyof typeof ICONS;
+  icon?: keyof typeof ICONS;
   loading?: boolean;
   classes?: string;
   size?: typeof SIZES[number];
@@ -25,7 +25,7 @@ export const ICONS = {
 const SIZES = ['sm', 'base', 'lg'] as const;
 
 export const Icon: React.FC<IconProps> = (props: IconProps) => {
-  const { icon, classes, size = 'base', loading } = props;
+  const { icon = 'cart', classes, size = 'base', loading } = props;
 
   return (
     <div
