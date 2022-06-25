@@ -59,9 +59,9 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
     <li
       className={clsx(
         'relative list-none flex flex-col',
-        size === 'base' ? 'w-60' : false,
-        size === 'lg' ? 'w-72' : false,
-        size === 'parent' ? 'w-full h-full' : false
+        size === 'base' && 'w-60',
+        size === 'lg' && 'w-72',
+        size === 'parent' && 'w-full h-full'
       )}
       {...elementProps}
       onMouseOver={() => setFocusHover((prev) => ({ ...prev, hover: true }))}
@@ -77,9 +77,9 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
         <div
           className={clsx(
             'relative w-full object-cover mb-2',
-            size === 'parent' ? 'aspect-square' : false,
-            size === 'base' ? 'h-72' : false,
-            size === 'lg' ? 'h-80' : false
+            size === 'parent' && 'aspect-square',
+            size === 'base' && 'h-72',
+            size === 'lg' && 'h-80'
           )}
         >
           <Image
@@ -118,7 +118,7 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
           <span
             className={clsx(
               `text-sm font-semibold uppercase sm:(text-base)`,
-              hovered ? 'underline' : false
+              hovered && 'underline'
             )}
           >
             {item.name}
@@ -131,10 +131,7 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
       </a>
       <div className="flex gap-2 md:(absolute right-0 bottom-0) ">
         <Button
-          classes={clsx(
-            'flex items-center',
-            !hovered ? 'sm:(opacity-0)' : false
-          )}
+          classes={clsx('flex items-center', !hovered && 'sm:(opacity-0)')}
           tag="button"
           elProps={{
             onClick: handleCartClick,
@@ -145,10 +142,7 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
           <Icon icon="cart" size="sm" />
         </Button>
         <Button
-          classes={clsx(
-            'flex items-center',
-            !hovered ? 'sm:(opacity-0)' : false
-          )}
+          classes={clsx('flex items-center', !hovered && 'sm:(opacity-0)')}
           tag="button"
           type="transparent"
           elProps={{

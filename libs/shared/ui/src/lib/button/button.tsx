@@ -41,24 +41,21 @@ export const Button: React.FC<ButtonProps> = (props) => {
       clsx(
         'transform-gpu transition-all active:scale-92 cursor-pointer inline-block',
         // ROUND
-        round === 'full' ? 'rounded-full' : false,
-        round === 'sm' ? 'rounded-lg' : false,
-        round === 'base' ? 'rounded-xl' : false,
+        round === 'full' && 'rounded-full',
+        round === 'sm' && 'rounded-lg',
+        round === 'base' && 'rounded-xl',
         // SIZE
-        size === 'parent' ? 'w-full h-full' : false,
-        size === 'sm' ? 'p-2' : false,
-        size === 'base' ? 'p-3' : false,
-        size === 'lg' ? 'p-4' : false,
+        size === 'parent' && 'w-full h-full',
+        size === 'sm' && 'p-2',
+        size === 'base' && 'p-3',
+        size === 'lg' && 'p-4',
         // TYPES
-        type === 'primary'
-          ? 'text-white bg-sky-600 hover:(bg-sky-700) active:(bg-sky-800)'
-          : false,
-        type === 'transparent'
-          ? 'hover:(bg-gray-100) active:(bg-gray-300)'
-          : false,
-        type === 'black' ? 'bg-black text-white hover:(bg-dark-400)' : false,
+        type === 'primary' &&
+          'text-white bg-sky-600 hover:(bg-sky-700) active:(bg-sky-800)',
+        type === 'transparent' && 'hover:(bg-gray-100) active:(bg-gray-300)',
+        type === 'black' && 'bg-black text-white hover:(bg-dark-400)',
         // DISABLED
-        disabled ? 'opacity-50 pointer-events-none' : false,
+        disabled && 'opacity-50 pointer-events-none',
         classes
       ),
     [type, size, round, classes, disabled]
