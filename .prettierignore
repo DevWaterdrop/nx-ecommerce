@@ -3,3 +3,4 @@
 /dist
 /coverage
 graphql.schema.json
+libs/shared/graphql/src/types.tsx
