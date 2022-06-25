@@ -17,6 +17,8 @@ module.exports = {
       config = await rootMain.webpackFinal(config, { configType });
     }
 
+    config.resolve.alias['next/image'] = require.resolve('./NextImage.js');
+
     // add your own webpack tweaks if needed
 
     return config;
