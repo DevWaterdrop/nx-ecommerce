@@ -4,3 +4,9 @@
 /coverage
 graphql.schema.json
 libs/shared/graphql/src/types.tsx
+node_modules
+apps/strapi/.cache
+apps/strapi/.tmp
+apps/strapi/dist
+apps/strapi/node_modules
+apps/strapi/.strapi-updater.json
