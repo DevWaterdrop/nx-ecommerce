@@ -20,14 +20,13 @@ describe('ItemCard', () => {
   });
 
   it('main elements are exists and properly formatted', () => {
-    const { price, name, smallDescription, tag } = props.item;
+    const { price, name, smallDescription } = props.item;
 
     const properPrice = formatPrice(price);
 
     screen.getByText(name);
     screen.getByText(properPrice);
     screen.getByText(smallDescription);
-    screen.getByText(tag || 'new');
   });
 
   it('proper link title', () => {
@@ -42,7 +41,7 @@ describe('ItemCard', () => {
   it('proper state on focus/hover', () => {
     const { name } = props.item;
 
-    const container = screen.getByRole('listitem');
+    const container = screen.getByTestId('item-card');
 
     const figcaption = screen.getByText(name);
     expect(figcaption).not.toHaveClass('underline');

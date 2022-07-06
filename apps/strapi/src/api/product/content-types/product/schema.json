@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {
     "i18n": {
@@ -63,7 +63,7 @@
       "target": "api::category.category",
       "inversedBy": "products"
     },
-    "Description": {
+    "description": {
       "pluginOptions": {
         "i18n": {
           "localized": true

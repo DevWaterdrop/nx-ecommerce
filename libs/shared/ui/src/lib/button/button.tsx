@@ -1,10 +1,13 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 import { useMemo } from 'react';
 
 type ConditionalProps =
   | {
       tag: 'a';
-      elProps?: JSX.IntrinsicElements['a'];
+      elProps?: JSX.IntrinsicElements['a'] & {
+        href: NonNullable<JSX.IntrinsicElements['a']['href']>;
+      };
     }
   | {
       tag: 'button';
@@ -63,9 +66,11 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
   if (tag === 'a') {
     return (
-      <a className={className} {...elProps}>
-        {children}
-      </a>
+      <Link href={elProps?.href || '/'}>
+        <a className={className} {...elProps}>
+          {children}
+        </a>
+      </Link>
     );
   }
 

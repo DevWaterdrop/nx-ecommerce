@@ -1,18 +1,17 @@
 import { AppProps } from 'next/app';
-import Head from 'next/head';
+import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import 'windi.css';
 import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
-    <>
-      <Head>
-        <title>Welcome to nx-ecommerce!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
+    // Don`t want to use Hydrate because of more boilerplate
+    <QueryClientProvider client={queryClient}>
+      <Component {...pageProps} />
+    </QueryClientProvider>
   );
 }
 

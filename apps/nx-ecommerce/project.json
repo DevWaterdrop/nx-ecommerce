@@ -34,14 +34,6 @@
         "buildTarget": "nx-ecommerce:build:production"
       }
     },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/nx-ecommerce"],
-      "options": {
-        "jestConfig": "apps/nx-ecommerce/jest.config.js",
-        "passWithNoTests": true
-      }
-    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

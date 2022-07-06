@@ -15,6 +15,9 @@ const nextConfig = {
     config.plugins.push(new WindiCSSWebpackPlugin());
     return config;
   },
+  images: {
+    domains: ['localhost'],
+  },
 };
 
 module.exports = withNx(nextConfig);

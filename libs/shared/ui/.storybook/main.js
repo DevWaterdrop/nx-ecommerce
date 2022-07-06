@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const rootMain = require('../../../../.storybook/main');
 
 module.exports = {
@@ -17,7 +18,14 @@ module.exports = {
       config = await rootMain.webpackFinal(config, { configType });
     }
 
-    config.resolve.alias['next/image'] = require.resolve('./NextImage.js');
+    config.resolve.alias['next/image'] = require.resolve('./NextImage.jsx');
+    config.resolve.alias['next/link'] = require.resolve('./NextLink.jsx');
+
+    // Mock ENV
+    const plugin = config.plugins.find(
+      (plugin) => plugin instanceof webpack.DefinePlugin
+    );
+    plugin.definitions['process.env.NX_STRAPI_URL'] = JSON.stringify('/');
 
     // add your own webpack tweaks if needed
 

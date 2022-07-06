@@ -1,5 +1,5 @@
 query searchbarSearch($value: String) {
-  products(filters: { name: { containsi: $value } }) {
+  products(filters: { name: { containsi: $value } }, pagination: { limit: 5 }) {
     data {
       id
       attributes {

@@ -3,24 +3,52 @@ import { CategoryCardProps } from '../lib/category-card';
 import { IconProps } from '../lib/icon/icon';
 import { ItemCardProps } from '../lib/item-card';
 import { NavButtonProps } from '../lib/nav-button';
+import { SearchbarItemProps } from '../lib/searchbar-item';
 import flowerJPEG from './flower.jpeg';
 import roomJPEG from './room.jpeg';
 
-export const ITEM: Required<ItemCardProps['item']> = {
+export const ITEM: ItemCardProps['item'] = {
+  slug: 'lovely-flower',
   price: 65,
   name: 'Lovely flower',
-  id: '#',
-  images: [flowerJPEG, roomJPEG],
+  images: {
+    data: [
+      {
+        attributes: {
+          url: flowerJPEG,
+        },
+      },
+      {
+        attributes: {
+          url: roomJPEG,
+        },
+      },
+    ],
+  },
   smallDescription: 'For you, for me, for us',
-  tag: 'new',
+  description: 'Lovely description',
 };
 
 export const ITEM_SECOND: ItemCardProps['item'] = {
+  slug: 'roomy',
   price: 50,
   name: 'Roomy',
-  id: '#1',
-  images: [roomJPEG, flowerJPEG],
+  images: {
+    data: [
+      {
+        attributes: {
+          url: flowerJPEG,
+        },
+      },
+      {
+        attributes: {
+          url: roomJPEG,
+        },
+      },
+    ],
+  },
   smallDescription: 'Hmmm, nice vase',
+  description: 'Vaaaase',
 };
 
 export const ITEM_CARD_DEFAULT_PROPS: ItemCardProps = {
@@ -31,9 +59,18 @@ export const ITEM_CARD_DEFAULT_PROPS: ItemCardProps = {
 };
 
 export const CATEGORY_CARD_DEFAULT_PROPS: CategoryCardProps = {
-  smallDescription: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-  image: roomJPEG,
-  slug: '#',
+  category: {
+    smallDescription:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+    image: {
+      data: {
+        attributes: {
+          url: roomJPEG,
+        },
+      },
+    },
+    slug: '1',
+  },
 };
 
 export const NAV_BUTTON_DEFAULT_PROPS: NavButtonProps = {
@@ -50,4 +87,21 @@ export const BUTTON_DEFAULT_PROPS: ButtonProps = {
   size: 'base',
   type: 'primary',
   round: 'full',
+};
+
+export const SEARCHBAR_ITEM_DEFAULT_PROPS: SearchbarItemProps = {
+  item: {
+    slug: 'lovely-flower',
+    smallDescription: 'For you, for me, for us',
+    name: 'Lovely flower',
+    images: {
+      data: [
+        {
+          attributes: {
+            url: flowerJPEG,
+          },
+        },
+      ],
+    },
+  },
 };

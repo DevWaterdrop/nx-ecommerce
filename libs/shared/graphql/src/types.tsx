@@ -20,7 +20,6 @@ export type Scalars = {
   DateTime: any;
   I18NLocaleCode: any;
   JSON: any;
-  PageBlocksDynamicZoneInput: any;
   Upload: any;
 };
 
@@ -50,7 +49,7 @@ export type BooleanFilterInput = {
 export type Category = {
   __typename?: 'Category';
   createdAt?: Maybe<Scalars['DateTime']>;
-  image?: Maybe<UploadFileRelationResponseCollection>;
+  image?: Maybe<UploadFileEntityResponse>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<CategoryRelationResponseCollection>;
   name: Scalars['String'];
@@ -58,13 +57,6 @@ export type Category = {
   slug: Scalars['String'];
   smallDescription: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type CategoryImageArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -78,7 +70,6 @@ export type CategoryLocalizationsArgs = {
 export type CategoryProductsArgs = {
   filters?: InputMaybe<ProductFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -115,7 +106,7 @@ export type CategoryFiltersInput = {
 };
 
 export type CategoryInput = {
-  image?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  image?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
   products?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   slug?: InputMaybe<Scalars['String']>;
@@ -125,33 +116,6 @@ export type CategoryInput = {
 export type CategoryRelationResponseCollection = {
   __typename?: 'CategoryRelationResponseCollection';
   data: Array<CategoryEntity>;
-};
-
-export type ComponentHomePageHeroCategories = {
-  __typename?: 'ComponentHomePageHeroCategories';
-  categories?: Maybe<CategoryRelationResponseCollection>;
-  id: Scalars['ID'];
-};
-
-
-export type ComponentHomePageHeroCategoriesCategoriesArgs = {
-  filters?: InputMaybe<CategoryFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ComponentHomePageRecommendedProducts = {
-  __typename?: 'ComponentHomePageRecommendedProducts';
-  id: Scalars['ID'];
-  products?: Maybe<ProductRelationResponseCollection>;
-};
-
-
-export type ComponentHomePageRecommendedProductsProductsArgs = {
-  filters?: InputMaybe<ProductFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type ComponentPageMeta = {
@@ -173,30 +137,6 @@ export type ComponentPageMetaInput = {
   content?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
-};
-
-export type ComponentPageSeo = {
-  __typename?: 'ComponentPageSeo';
-  id: Scalars['ID'];
-  meta?: Maybe<Array<Maybe<ComponentPageMeta>>>;
-  metaDescription?: Maybe<Scalars['String']>;
-  metaImage?: Maybe<UploadFileEntityResponse>;
-  metaTitle: Scalars['String'];
-};
-
-
-export type ComponentPageSeoMetaArgs = {
-  filters?: InputMaybe<ComponentPageMetaFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type ComponentPageSeoInput = {
-  id?: InputMaybe<Scalars['ID']>;
-  meta?: InputMaybe<Array<InputMaybe<ComponentPageMetaInput>>>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  metaImage?: InputMaybe<Scalars['ID']>;
-  metaTitle?: InputMaybe<Scalars['String']>;
 };
 
 export type ComponentProductInformationSection = {
@@ -241,12 +181,6 @@ export type DateTimeFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   startsWith?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type Error = {
-  __typename?: 'Error';
-  code: Scalars['String'];
-  message?: Maybe<Scalars['String']>;
 };
 
 export type FastUser = {
@@ -316,7 +250,94 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Category | ComponentHomePageHeroCategories | ComponentHomePageRecommendedProducts | ComponentPageMeta | ComponentPageSeo | ComponentProductInformationSection | FastUser | I18NLocale | Page | Product | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Category | ComponentPageMeta | ComponentProductInformationSection | FastUser | GlobalSeo | HomePage | I18NLocale | Product | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+
+export type GlobalSeo = {
+  __typename?: 'GlobalSeo';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<GlobalSeoRelationResponseCollection>;
+  meta?: Maybe<Array<Maybe<ComponentPageMeta>>>;
+  metaDescription: Scalars['String'];
+  metaImage: UploadFileEntityResponse;
+  metaTitle: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type GlobalSeoMetaArgs = {
+  filters?: InputMaybe<ComponentPageMetaFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type GlobalSeoEntity = {
+  __typename?: 'GlobalSeoEntity';
+  attributes?: Maybe<GlobalSeo>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type GlobalSeoEntityResponse = {
+  __typename?: 'GlobalSeoEntityResponse';
+  data?: Maybe<GlobalSeoEntity>;
+};
+
+export type GlobalSeoInput = {
+  meta?: InputMaybe<Array<InputMaybe<ComponentPageMetaInput>>>;
+  metaDescription?: InputMaybe<Scalars['String']>;
+  metaImage?: InputMaybe<Scalars['ID']>;
+  metaTitle?: InputMaybe<Scalars['String']>;
+};
+
+export type GlobalSeoRelationResponseCollection = {
+  __typename?: 'GlobalSeoRelationResponseCollection';
+  data: Array<GlobalSeoEntity>;
+};
+
+export type HomePage = {
+  __typename?: 'HomePage';
+  categories?: Maybe<CategoryRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<HomePageRelationResponseCollection>;
+  products?: Maybe<ProductRelationResponseCollection>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type HomePageCategoriesArgs = {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type HomePageProductsArgs = {
+  filters?: InputMaybe<ProductFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type HomePageEntity = {
+  __typename?: 'HomePageEntity';
+  attributes?: Maybe<HomePage>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type HomePageEntityResponse = {
+  __typename?: 'HomePageEntityResponse';
+  data?: Maybe<HomePageEntity>;
+};
+
+export type HomePageInput = {
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  products?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+};
+
+export type HomePageRelationResponseCollection = {
+  __typename?: 'HomePageRelationResponseCollection';
+  data: Array<HomePageEntity>;
+};
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -428,8 +449,8 @@ export type Mutation = {
   createCategory?: Maybe<CategoryEntityResponse>;
   createCategoryLocalization?: Maybe<CategoryEntityResponse>;
   createFastUser?: Maybe<FastUserEntityResponse>;
-  createPage?: Maybe<PageEntityResponse>;
-  createPageLocalization?: Maybe<PageEntityResponse>;
+  createGlobalSeoLocalization?: Maybe<GlobalSeoEntityResponse>;
+  createHomePageLocalization?: Maybe<HomePageEntityResponse>;
   createProduct?: Maybe<ProductEntityResponse>;
   createProductLocalization?: Maybe<ProductEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -440,7 +461,8 @@ export type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteCategory?: Maybe<CategoryEntityResponse>;
   deleteFastUser?: Maybe<FastUserEntityResponse>;
-  deletePage?: Maybe<PageEntityResponse>;
+  deleteGlobalSeo?: Maybe<GlobalSeoEntityResponse>;
+  deleteHomePage?: Maybe<HomePageEntityResponse>;
   deleteProduct?: Maybe<ProductEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -462,7 +484,8 @@ export type Mutation = {
   updateCategory?: Maybe<CategoryEntityResponse>;
   updateFastUser?: Maybe<FastUserEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
-  updatePage?: Maybe<PageEntityResponse>;
+  updateGlobalSeo?: Maybe<GlobalSeoEntityResponse>;
+  updateHomePage?: Maybe<HomePageEntityResponse>;
   updateProduct?: Maybe<ProductEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -492,14 +515,15 @@ export type MutationCreateFastUserArgs = {
 };
 
 
-export type MutationCreatePageArgs = {
-  data: PageInput;
+export type MutationCreateGlobalSeoLocalizationArgs = {
+  data?: InputMaybe<GlobalSeoInput>;
+  id?: InputMaybe<Scalars['ID']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
 
-export type MutationCreatePageLocalizationArgs = {
-  data?: InputMaybe<PageInput>;
+export type MutationCreateHomePageLocalizationArgs = {
+  data?: InputMaybe<HomePageInput>;
   id?: InputMaybe<Scalars['ID']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
@@ -549,8 +573,12 @@ export type MutationDeleteFastUserArgs = {
 };
 
 
-export type MutationDeletePageArgs = {
-  id: Scalars['ID'];
+export type MutationDeleteGlobalSeoArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationDeleteHomePageArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -640,9 +668,14 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
-export type MutationUpdatePageArgs = {
-  data: PageInput;
-  id: Scalars['ID'];
+export type MutationUpdateGlobalSeoArgs = {
+  data: GlobalSeoInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationUpdateHomePageArgs = {
+  data: HomePageInput;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
 };
 
@@ -686,73 +719,6 @@ export type MutationUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>;
 };
 
-export type Page = {
-  __typename?: 'Page';
-  blocks?: Maybe<Array<Maybe<PageBlocksDynamicZone>>>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  locale?: Maybe<Scalars['String']>;
-  localizations?: Maybe<PageRelationResponseCollection>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  seo?: Maybe<ComponentPageSeo>;
-  slug: Scalars['String'];
-  title: Scalars['String'];
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type PageLocalizationsArgs = {
-  filters?: InputMaybe<PageFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type PageBlocksDynamicZone = ComponentHomePageHeroCategories | ComponentHomePageRecommendedProducts | Error;
-
-export type PageEntity = {
-  __typename?: 'PageEntity';
-  attributes?: Maybe<Page>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type PageEntityResponse = {
-  __typename?: 'PageEntityResponse';
-  data?: Maybe<PageEntity>;
-};
-
-export type PageEntityResponseCollection = {
-  __typename?: 'PageEntityResponseCollection';
-  data: Array<PageEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type PageFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  locale?: InputMaybe<StringFilterInput>;
-  localizations?: InputMaybe<PageFiltersInput>;
-  not?: InputMaybe<PageFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type PageInput = {
-  blocks?: InputMaybe<Array<Scalars['PageBlocksDynamicZoneInput']>>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  seo?: InputMaybe<ComponentPageSeoInput>;
-  slug?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-};
-
-export type PageRelationResponseCollection = {
-  __typename?: 'PageRelationResponseCollection';
-  data: Array<PageEntity>;
-};
-
 export type Pagination = {
   __typename?: 'Pagination';
   page: Scalars['Int'];
@@ -770,16 +736,15 @@ export type PaginationArg = {
 
 export type Product = {
   __typename?: 'Product';
-  Description: Scalars['String'];
   category?: Maybe<CategoryEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
+  description: Scalars['String'];
   images?: Maybe<UploadFileRelationResponseCollection>;
   information?: Maybe<Array<Maybe<ComponentProductInformationSection>>>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<ProductRelationResponseCollection>;
   name: Scalars['String'];
   price: Scalars['Float'];
-  publishedAt?: Maybe<Scalars['DateTime']>;
   slug: Scalars['String'];
   smallDescription: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -803,7 +768,6 @@ export type ProductInformationArgs = {
 export type ProductLocalizationsArgs = {
   filters?: InputMaybe<ProductFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -825,10 +789,10 @@ export type ProductEntityResponseCollection = {
 };
 
 export type ProductFiltersInput = {
-  Description?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<ProductFiltersInput>>>;
   category?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   locale?: InputMaybe<StringFilterInput>;
   localizations?: InputMaybe<ProductFiltersInput>;
@@ -836,20 +800,18 @@ export type ProductFiltersInput = {
   not?: InputMaybe<ProductFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ProductFiltersInput>>>;
   price?: InputMaybe<FloatFilterInput>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
   smallDescription?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ProductInput = {
-  Description?: InputMaybe<Scalars['String']>;
   category?: InputMaybe<Scalars['ID']>;
+  description?: InputMaybe<Scalars['String']>;
   images?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   information?: InputMaybe<Array<InputMaybe<ComponentProductInformationSectionInput>>>;
   name?: InputMaybe<Scalars['String']>;
   price?: InputMaybe<Scalars['Float']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
   slug?: InputMaybe<Scalars['String']>;
   smallDescription?: InputMaybe<Scalars['String']>;
 };
@@ -859,22 +821,17 @@ export type ProductRelationResponseCollection = {
   data: Array<ProductEntity>;
 };
 
-export enum PublicationState {
-  Live = 'LIVE',
-  Preview = 'PREVIEW'
-}
-
 export type Query = {
   __typename?: 'Query';
   categories?: Maybe<CategoryEntityResponseCollection>;
   category?: Maybe<CategoryEntityResponse>;
   fastUser?: Maybe<FastUserEntityResponse>;
   fastUsers?: Maybe<FastUserEntityResponseCollection>;
+  globalSeo?: Maybe<GlobalSeoEntityResponse>;
+  homePage?: Maybe<HomePageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
-  page?: Maybe<PageEntityResponse>;
-  pages?: Maybe<PageEntityResponseCollection>;
   product?: Maybe<ProductEntityResponse>;
   products?: Maybe<ProductEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
@@ -914,6 +871,16 @@ export type QueryFastUsersArgs = {
 };
 
 
+export type QueryGlobalSeoArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type QueryHomePageArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
 export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
@@ -922,21 +889,6 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type QueryPageArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-};
-
-
-export type QueryPagesArgs = {
-  filters?: InputMaybe<PageFiltersInput>;
-  locale?: InputMaybe<Scalars['I18NLocaleCode']>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -951,7 +903,6 @@ export type QueryProductsArgs = {
   filters?: InputMaybe<ProductFiltersInput>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1404,6 +1355,23 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type GlobalSeoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GlobalSeoQuery = { __typename?: 'Query', globalSeo?: { __typename?: 'GlobalSeoEntityResponse', data?: { __typename?: 'GlobalSeoEntity', attributes?: { __typename?: 'GlobalSeo', metaTitle: string, metaDescription: string, metaImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, meta?: Array<{ __typename?: 'ComponentPageMeta', id: string, name: string, content: string } | null> | null } | null } | null } | null };
+
+export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', products?: { __typename?: 'ProductRelationResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', price: number, description: string, slug: string, smallDescription: string, name: string, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', name: string, slug: string, smallDescription: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
+
+export type ProductSlugQueryVariables = Exact<{
+  value?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ProductSlugQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', slug: string, smallDescription: string, name: string, description: string, price: number, information?: Array<{ __typename?: 'ComponentProductInformationSection', title: string, content: string } | null> | null, category?: { __typename?: 'CategoryEntityResponse', data?: { __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', slug: string, name: string } | null } | null } | null, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
+
 export type SearchbarSearchQueryVariables = Exact<{
   value?: InputMaybe<Scalars['String']>;
 }>;
@@ -1412,9 +1380,157 @@ export type SearchbarSearchQueryVariables = Exact<{
 export type SearchbarSearchQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', slug: string, smallDescription: string, name: string, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
 
 
+export const GlobalSeoDocument = `
+    query GlobalSeo {
+  globalSeo {
+    data {
+      attributes {
+        metaTitle
+        metaImage {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        metaDescription
+        meta {
+          id
+          name
+          content
+        }
+      }
+    }
+  }
+}
+    `;
+export const useGlobalSeoQuery = <
+      TData = GlobalSeoQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: GlobalSeoQueryVariables,
+      options?: UseQueryOptions<GlobalSeoQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GlobalSeoQuery, TError, TData>(
+      variables === undefined ? ['GlobalSeo'] : ['GlobalSeo', variables],
+      fetcher<GlobalSeoQuery, GlobalSeoQueryVariables>(client, GlobalSeoDocument, variables, headers),
+      options
+    );
+export const HomePageDocument = `
+    query HomePage {
+  homePage {
+    data {
+      attributes {
+        products {
+          data {
+            id
+            attributes {
+              price
+              description
+              slug
+              smallDescription
+              name
+              images {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        categories {
+          data {
+            id
+            attributes {
+              name
+              slug
+              smallDescription
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+export const useHomePageQuery = <
+      TData = HomePageQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: HomePageQueryVariables,
+      options?: UseQueryOptions<HomePageQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<HomePageQuery, TError, TData>(
+      variables === undefined ? ['HomePage'] : ['HomePage', variables],
+      fetcher<HomePageQuery, HomePageQueryVariables>(client, HomePageDocument, variables, headers),
+      options
+    );
+export const ProductSlugDocument = `
+    query ProductSlug($value: String) {
+  products(filters: {slug: {eq: $value}}, pagination: {limit: 1}) {
+    data {
+      id
+      attributes {
+        slug
+        smallDescription
+        name
+        information {
+          title
+          content
+        }
+        description
+        price
+        category {
+          data {
+            id
+            attributes {
+              slug
+              name
+            }
+          }
+        }
+        images {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+export const useProductSlugQuery = <
+      TData = ProductSlugQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: ProductSlugQueryVariables,
+      options?: UseQueryOptions<ProductSlugQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<ProductSlugQuery, TError, TData>(
+      variables === undefined ? ['ProductSlug'] : ['ProductSlug', variables],
+      fetcher<ProductSlugQuery, ProductSlugQueryVariables>(client, ProductSlugDocument, variables, headers),
+      options
+    );
 export const SearchbarSearchDocument = `
     query searchbarSearch($value: String) {
-  products(filters: {name: {containsi: $value}}) {
+  products(filters: {name: {containsi: $value}}, pagination: {limit: 5}) {
     data {
       id
       attributes {

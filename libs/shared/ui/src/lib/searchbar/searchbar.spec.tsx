@@ -30,6 +30,7 @@ describe('Searchbar', () => {
         handleInput={handleInput}
         handleClear={handleClear}
         handleSubmit={handleSubmit}
+        loading={false}
       />
     );
 
@@ -67,6 +68,7 @@ describe('Searchbar', () => {
         handleInput={handleInput}
         handleClear={handleClear}
         handleSubmit={handleSubmit}
+        loading={false}
       />
     );
 

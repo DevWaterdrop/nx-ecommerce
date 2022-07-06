@@ -4,13 +4,13 @@ import xSVG from '../../assets/icons/x.svg';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { handleBlur } from '@nx-ecommerce/shared/utils/handle-blur';
-import { Item } from '../item-card';
 import { SearchbarItem } from '../searchbar-item';
 import { Icon } from '../icon';
+import type { SearchbarSearchQuery } from '@nx-ecommerce/shared/graphql/types';
 
 export interface SearchbarProps {
   input: string;
-  items: Item[];
+  items: NonNullable<SearchbarSearchQuery['products']>['data'];
   handleClear: () => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -88,9 +88,12 @@ export const Searchbar: React.FC<SearchbarProps> = (props: SearchbarProps) => {
             {items.length > 0 && (
               <div className="mt-20 px-10 pb-2">
                 <ul className="flex flex-col max-h-[50vh] overflow-scroll">
-                  {items.map((item) => (
-                    <SearchbarItem key={item.id} item={item} />
-                  ))}
+                  {items.map(
+                    (item) =>
+                      item.attributes && (
+                        <SearchbarItem key={item.id} item={item.attributes} />
+                      )
+                  )}
                 </ul>
               </div>
             )}
