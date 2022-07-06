@@ -1,3 +1,5 @@
 import { CategoryCard, CategoryCardProps } from './category-card';
 
-export { CategoryCard, CategoryCardProps };
+export { CategoryCard };
+
+export type { CategoryCardProps };

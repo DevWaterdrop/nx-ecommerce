@@ -1,3 +1,5 @@
 import { NavButton, NavButtonProps } from './nav-button';
 
-export { NavButton, NavButtonProps };
+export { NavButton };
+
+export type { NavButtonProps };

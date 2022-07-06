@@ -1,3 +1,5 @@
 import { SearchbarItem, SearchbarItemProps } from './searchbar-item';
 
-export { SearchbarItem, SearchbarItemProps };
+export { SearchbarItem };
+
+export type { SearchbarItemProps };

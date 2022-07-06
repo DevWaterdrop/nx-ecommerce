@@ -1,3 +1,5 @@
 import { ItemCard, ItemCardProps } from './item-card';
 
-export { ItemCard, ItemCardProps };
+export { ItemCard };
+
+export type { ItemCardProps };

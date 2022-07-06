@@ -1,3 +1,5 @@
 import { Icon, IconProps, ICONS } from './icon';
 
-export { Icon, IconProps, ICONS };
+export { Icon, ICONS };
+
+export type { IconProps };
