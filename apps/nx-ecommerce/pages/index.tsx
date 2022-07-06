@@ -4,7 +4,7 @@ import {
   useGlobalSeoQuery,
   useHomePageQuery,
 } from '@nx-ecommerce/shared/graphql/types';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { Layout } from '../components/Layout';
 import { client } from '../lib/client';
 import { ItemCard } from '@nx-ecommerce/shared/ui/item-card';
@@ -18,15 +18,18 @@ interface Props {
   globalSeo: ReturnGetGlobalSeo;
 }
 
-export const getStaticProps: GetStaticProps = withGlobalSeo(async () => {
-  const homePage = await client.request<HomePageQuery>(HomePageDocument);
+// TODO: Change to GetStaticProps
+export const getServerSideProps: GetServerSideProps = withGlobalSeo(
+  async () => {
+    const homePage = await client.request<HomePageQuery>(HomePageDocument);
 
-  return {
-    props: {
-      homePage,
-    },
-  };
-});
+    return {
+      props: {
+        homePage,
+      },
+    };
+  }
+);
 
 export const Index: React.FC<Props> = ({ homePage, globalSeo }) => {
   const { data } = useHomePageQuery(client, undefined, {
