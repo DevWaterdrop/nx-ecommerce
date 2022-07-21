@@ -2,7 +2,7 @@ import { NAV_BUTTON_DEFAULT_PROPS } from '../../props/constants';
 import { render, RenderResult, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { NavButton } from './nav-button';
+import { getHref, NavButton } from './nav-button';
 
 describe('NavButton', () => {
   let renderResult: RenderResult;
@@ -18,8 +18,10 @@ describe('NavButton', () => {
   });
 
   it('proper href and title', () => {
-    const title = `${props.type} page`;
-    const link = `/${props.type}`;
+    const href = getHref(props.type);
+
+    const title = `${href} page`;
+    const link = `/${href}`;
 
     const linkElement = screen.getByRole('link', { name: title });
     expect(linkElement).toHaveAttribute('href', link);

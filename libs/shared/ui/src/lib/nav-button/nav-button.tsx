@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Button } from '../button';
 import { Icon, ICONS } from '../icon';
 
@@ -13,16 +14,29 @@ export type NavButtonProps =
       loading?: boolean;
     };
 
+export function getHref(type: NavButtonProps['type']): string {
+  switch (type) {
+    case 'cartBlack':
+      return 'cart';
+    case 'heart':
+      return 'favorite';
+    default:
+      return type;
+  }
+}
+
 export const NavButton: React.FC<NavButtonProps> = (props) => {
   const { type, loading } = props;
+
+  const href = useMemo(() => getHref(type), [type]);
 
   return (
     <Button
       tag="a"
       type="transparent"
       elProps={{
-        href: `/${type}`,
-        title: `${type} page`,
+        href: `/${href}`,
+        title: `${href} page`,
       }}
       disabled={loading}
     >
