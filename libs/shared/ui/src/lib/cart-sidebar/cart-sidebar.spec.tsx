@@ -1,4 +1,5 @@
 import { render, RenderResult, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { CartSidebar } from './cart-sidebar';
@@ -14,6 +15,12 @@ describe('CartSidebar', () => {
 
   it('should render successfully', () => {
     const { baseElement } = renderResult;
+
+    const tree = renderer
+      .create(<CartSidebar {...CART_SIDEBAR_DEFAULT_PROPS} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(baseElement).toBeTruthy();
   });
 

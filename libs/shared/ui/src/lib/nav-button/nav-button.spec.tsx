@@ -1,5 +1,6 @@
 import { NAV_BUTTON_DEFAULT_PROPS } from '../../props/constants';
 import { render, RenderResult, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { getHref, NavButton } from './nav-button';
@@ -14,6 +15,10 @@ describe('NavButton', () => {
 
   it('should render successfully', () => {
     const { baseElement } = renderResult;
+
+    const tree = renderer.create(<NavButton {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(baseElement).toBeTruthy();
   });
 

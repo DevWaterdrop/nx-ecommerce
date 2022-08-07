@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem should render successfully 1`] = `
+<div
+  className="w-full flex"
+>
+  <a
+    href="/i/lovely-flower"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="relative aspect-square w-28 object-cover bg-gray-100"
+    >
+      Next image stub
+    </div>
+  </a>
+  <div
+    className="ml-8 w-full flex flex-col"
+  >
+    <div
+      className="w-full flex flex-wrap items-center justify-between gap-x-1"
+    >
+      <a
+        className="text-base font-semibold uppercase hover:(underline)"
+        href="/i/lovely-flower"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+      >
+        Lovely flower
+      </a>
+      <span
+        className="font-bold"
+      >
+        65.00$
+      </span>
+    </div>
+    <small
+      className="mt-1"
+    >
+      For you, for me, for us
+    </small>
+    <div
+      className="mt-auto flex gap-8 items-center flex-wrap md:(gap-4) lg:(gap-8)"
+    >
+      <div
+        className="h-8 flex"
+      >
+        <button
+          className="h-full w-8 relative flex items-center justify-center border rounded-l-xl text-semibold text-xl transition hover:(bg-black text-white border-black)"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            className="pb-0.75"
+          >
+            -
+          </span>
+        </button>
+        <span
+          className="w-8 flex items-center justify-center border-t border-b"
+        >
+          1
+        </span>
+        <button
+          className="h-full w-8 border rounded-r-xl text-semibold text-xl transition hover:(bg-black text-white border-black)"
+          onClick={[Function]}
+          type="button"
+        >
+          +
+        </button>
+      </div>
+      <div
+        className="gap-8 items-center hidden text-xs xs:(flex) sm:(text-base) md:(text-xs gap-4) lg:(text-base gap-8)"
+      >
+        <button
+          className="hover:(underline)"
+          onClick={[Function]}
+          type="button"
+        >
+          Remove item
+        </button>
+        <button
+          className="hover:(underline)"
+          onClick={[Function]}
+          type="button"
+        >
+          Add to favorites
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

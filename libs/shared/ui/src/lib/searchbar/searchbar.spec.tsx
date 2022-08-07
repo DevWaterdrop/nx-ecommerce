@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { Searchbar, SearchbarProps } from './searchbar';
@@ -38,6 +39,20 @@ describe('Searchbar', () => {
   });
 
   it('should render successfully', () => {
+    const tree = renderer
+      .create(
+        <Searchbar
+          items={[]}
+          input={input}
+          handleInput={handleInput}
+          handleClear={handleClear}
+          handleSubmit={handleSubmit}
+          loading={false}
+        />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(element).toBeTruthy();
   });
 

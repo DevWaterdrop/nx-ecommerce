@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductSidebar should render successfully 1`] = `
+<aside
+  className="h-full min-w-56 w-full flex flex-col md:(order-2 top-12 sticky w-2/5)"
+>
+  <div
+    className="mb-2 flex items-center justify-between"
+  >
+    <h1
+      className="max-w-3/5 font-bold text-3xl uppercase break-words"
+    >
+      Lovely flower
+    </h1>
+    <span
+      className="font-semibold text-base"
+    >
+      65.00$
+    </span>
+  </div>
+  <p
+    className="text-sm opacity-75"
+  >
+    For you, for me, for us
+  </p>
+  <div
+    className="mt-8 py-6 px-4 flex flex-col gap-1 border rounded-md text-base md:(text-sm py-4)"
+  >
+    <p>
+      100% of the net profits will be donated to Ukraine!
+    </p>
+  </div>
+  <div
+    className="mt-8 flex gap-4 justify-between"
+  >
+    <div
+      className="flex-1 relative"
+    >
+      <button
+        className="inline-block cursor-pointer transform-gpu transition-all active:scale-92 rounded-full w-full h-full text-white bg-sky-600 hover:(bg-sky-700) active:(bg-sky-800)"
+        onClick={[Function]}
+      >
+        <span
+          className="font-semibold"
+        >
+          Add to bag
+        </span>
+      </button>
+    </div>
+    <button
+      className="inline-block cursor-pointer transform-gpu transition-all active:scale-92 rounded-full p-4 hover:(bg-gray-100 border-black) active:(bg-gray-300) border border-gray-300 flex justify-center items-center"
+      onClick={[Function]}
+      title="add to favorite"
+      type="button"
+    >
+      <div
+        aria-hidden="true"
+        className="relative flex items-center select-none pointer-events-none h-4 w-4  sm:(h-6 w-6)"
+      >
+        Next image stub
+      </div>
+    </button>
+  </div>
+</aside>
+`;

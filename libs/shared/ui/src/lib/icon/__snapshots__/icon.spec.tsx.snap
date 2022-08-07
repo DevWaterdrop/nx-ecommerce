@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon should render successfully 1`] = `
+<div
+  aria-hidden="true"
+  className="relative flex items-center select-none pointer-events-none h-5 w-5"
+>
+  Next image stub
+</div>
+`;

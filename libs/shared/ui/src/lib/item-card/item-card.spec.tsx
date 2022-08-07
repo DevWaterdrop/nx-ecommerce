@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import renderer from 'react-test-renderer';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { ItemCard, createLabel } from './item-card';
@@ -16,6 +17,9 @@ describe('ItemCard', () => {
   });
 
   it('should render successfully', () => {
+    const tree = renderer.create(<ItemCard {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(element).toBeTruthy();
   });
 
