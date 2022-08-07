@@ -1,23 +1,25 @@
 import { useMemo, useState } from 'react';
 import clsx from 'clsx';
-import Image from 'next/image';
-import { formatPrice } from '@nx-ecommerce/shared/utils/format-price';
 import { handleBlur } from '@nx-ecommerce/shared/utils/handle-blur';
 import { createItemHref } from '@nx-ecommerce/shared/utils/create-item-href';
 import type { Product } from '@nx-ecommerce/shared/graphql/refactored-types';
-import { Button } from '../button';
-import { Icon } from '../icon';
-import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
 import Link from 'next/link';
+import { CoverImage } from './local-components/CoverImage';
+import { Information } from './local-components/Information';
+import { Cart } from './local-components/Cart';
+import { Amount } from './local-components/Amount';
+import { Favorite } from './local-components/Favorite';
 
 /* eslint-disable-next-line */
 export interface ItemCardProps {
   item: Product;
   handleCartClick: () => void;
+  handleAmountCartClick: () => void;
   handleFavoriteClick: () => void;
   size?: typeof SIZES[number];
   elementProps?: JSX.IntrinsicElements['div'];
-  loadingFavorite?: boolean;
+  isFavorite?: boolean;
+  inCartAmount?: number;
 }
 
 const SIZES = ['base', 'lg', 'parent'] as const;
@@ -34,8 +36,10 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
     elementProps,
     size = 'parent',
     handleCartClick,
+    handleAmountCartClick,
     handleFavoriteClick,
-    loadingFavorite,
+    isFavorite = false,
+    inCartAmount = 0,
   } = props;
 
   const [{ hover, focus }, setFocusHover] = useState({
@@ -43,14 +47,15 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
     hover: false,
   });
 
-  const price = useMemo(() => formatPrice(item.price), [item.price]);
   const hovered = useMemo(() => focus || hover, [focus, hover]);
   const href = useMemo(() => createItemHref(item.slug), [item.slug]);
 
   return (
     <div
       className={clsx(
-        'relative list-none flex flex-col',
+        'relative',
+        'flex flex-col',
+        'list-none',
         size === 'base' && 'w-60',
         size === 'lg' && 'w-72',
         size === 'parent' && 'w-full h-full'
@@ -67,83 +72,37 @@ export const ItemCard: React.FC<ItemCardProps> = (props) => {
       data-testid="item-card"
     >
       <Link href={href}>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a className="mb-1" title={createLabel(item)}>
           <div
             className={clsx(
-              'relative w-full object-cover mb-2 bg-gray-100',
+              'relative w-full mb-2',
+              'object-cover bg-gray-100',
               size === 'parent' && 'aspect-square',
               size === 'base' && 'h-72',
               size === 'lg' && 'h-80'
             )}
           >
-            {item.images && !!item.images?.data?.length && (
-              <>
-                <Image
-                  src={getStrapiURL(item.images.data[0].attributes?.url)}
-                  alt={item.name}
-                  layout="fill"
-                  objectFit="cover"
-                />
-                {item.images.data[1] && (
-                  <div
-                    className={clsx(
-                      'absolute left-0 top-0 h-full w-full transition-opacity',
-                      hovered ? 'opacity-100' : 'opacity-0'
-                    )}
-                    aria-hidden="true"
-                    data-testid="second-image"
-                  >
-                    <Image
-                      src={getStrapiURL(item.images.data[1].attributes?.url)}
-                      alt=""
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
-                )}
-              </>
-            )}
+            <CoverImage product={item} hovered={hovered} />
           </div>
-          <div className="flex flex-col gap-1">
-            <span
-              className={clsx(
-                `text-sm font-semibold uppercase sm:(text-base)`,
-                hovered && 'underline'
-              )}
-            >
-              {item.name}
-            </span>
-            <span className="text-xs sm:(text-sm max-w-3/5) ">
-              {item.smallDescription}
-            </span>
-            <span className="font-bold text-md sm:(text-xl)">{price}</span>
-          </div>
+          <Information product={item} hovered={hovered} />
         </a>
       </Link>
       <div className="flex gap-2 md:(absolute right-0 bottom-0) ">
-        <Button
-          classes={clsx('flex items-center', !hovered && 'sm:(opacity-0)')}
-          tag="button"
-          elProps={{
-            onClick: handleCartClick,
-            title: 'add to cart',
-            type: 'button',
-          }}
-        >
-          <Icon icon="cart" size="sm" />
-        </Button>
-        <Button
-          classes={clsx('flex items-center', !hovered && 'sm:(opacity-0)')}
-          tag="button"
-          type="transparent"
-          elProps={{
-            onClick: handleFavoriteClick,
-            title: 'add to favorite',
-            type: 'button',
-          }}
-        >
-          <Icon icon="heart" loading={loadingFavorite} size="sm" />
-        </Button>
+        <div className={clsx('relative', !hovered && 'sm:(opacity-0)')}>
+          <Cart handleClick={handleCartClick} />
+          {inCartAmount > 0 && (
+            <Amount
+              handleClick={handleAmountCartClick}
+              inCartAmount={inCartAmount}
+            />
+          )}
+        </div>
+        <Favorite
+          handleClick={handleFavoriteClick}
+          hovered={hovered}
+          isFavorite={isFavorite}
+        />
       </div>
     </div>
   );

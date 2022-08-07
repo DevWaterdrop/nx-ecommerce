@@ -12,6 +12,10 @@ const nextConfig = {
     svgr: false,
   },
   webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack', 'url-loader'],
+    });
     config.plugins.push(new WindiCSSWebpackPlugin());
     return config;
   },

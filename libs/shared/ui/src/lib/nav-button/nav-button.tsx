@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { Button } from '../button';
 import { Icon, ICONS } from '../icon';
 
 type TypeProp<T extends keyof typeof ICONS> = keyof Pick<typeof ICONS, T>;
 
-export type NavButtonProps =
+export type NavButtonProps = (
   | {
       type: TypeProp<'user'>;
       loading: boolean;
@@ -12,7 +12,8 @@ export type NavButtonProps =
   | {
       type: TypeProp<'cartBlack' | 'heart'>;
       loading?: boolean;
-    };
+    }
+) & { children?: ReactNode };
 
 export function getHref(type: NavButtonProps['type']): string {
   switch (type) {
@@ -26,7 +27,7 @@ export function getHref(type: NavButtonProps['type']): string {
 }
 
 export const NavButton: React.FC<NavButtonProps> = (props) => {
-  const { type, loading } = props;
+  const { type, loading, children } = props;
 
   const href = useMemo(() => getHref(type), [type]);
 
@@ -41,6 +42,7 @@ export const NavButton: React.FC<NavButtonProps> = (props) => {
       disabled={loading}
     >
       <Icon icon={type} loading={loading} />
+      {children}
     </Button>
   );
 };

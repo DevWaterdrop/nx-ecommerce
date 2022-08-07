@@ -1,4 +1,4 @@
-query searchbarSearch($value: String) {
+query SearchbarSearch($value: String) {
   products(filters: { name: { containsi: $value } }, pagination: { limit: 5 }) {
     data {
       id

@@ -118,6 +118,27 @@ export type CategoryRelationResponseCollection = {
   data: Array<CategoryEntity>;
 };
 
+export type ComponentOrderItem = {
+  __typename?: 'ComponentOrderItem';
+  amount: Scalars['Int'];
+  id: Scalars['ID'];
+  product?: Maybe<ProductEntityResponse>;
+};
+
+export type ComponentOrderItemFiltersInput = {
+  amount?: InputMaybe<IntFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentOrderItemFiltersInput>>>;
+  not?: InputMaybe<ComponentOrderItemFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentOrderItemFiltersInput>>>;
+  product?: InputMaybe<ProductFiltersInput>;
+};
+
+export type ComponentOrderItemInput = {
+  amount?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['ID']>;
+  product?: InputMaybe<Scalars['ID']>;
+};
+
 export type ComponentPageMeta = {
   __typename?: 'ComponentPageMeta';
   content: Scalars['String'];
@@ -186,8 +207,16 @@ export type DateTimeFilterInput = {
 export type FastUser = {
   __typename?: 'FastUser';
   createdAt?: Maybe<Scalars['DateTime']>;
+  orders?: Maybe<OrderRelationResponseCollection>;
   token: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type FastUserOrdersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type FastUserEntity = {
@@ -213,11 +242,13 @@ export type FastUserFiltersInput = {
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<FastUserFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<FastUserFiltersInput>>>;
+  orders?: InputMaybe<OrderFiltersInput>;
   token?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type FastUserInput = {
+  orders?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   token?: InputMaybe<Scalars['String']>;
 };
 
@@ -250,7 +281,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Category | ComponentPageMeta | ComponentProductInformationSection | FastUser | GlobalSeo | HomePage | I18NLocale | Product | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Category | ComponentOrderItem | ComponentPageMeta | ComponentProductInformationSection | FastUser | GlobalSeo | HomePage | I18NLocale | Order | Product | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type GlobalSeo = {
   __typename?: 'GlobalSeo';
@@ -451,6 +482,7 @@ export type Mutation = {
   createFastUser?: Maybe<FastUserEntityResponse>;
   createGlobalSeoLocalization?: Maybe<GlobalSeoEntityResponse>;
   createHomePageLocalization?: Maybe<HomePageEntityResponse>;
+  createOrder?: Maybe<OrderEntityResponse>;
   createProduct?: Maybe<ProductEntityResponse>;
   createProductLocalization?: Maybe<ProductEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -463,6 +495,7 @@ export type Mutation = {
   deleteFastUser?: Maybe<FastUserEntityResponse>;
   deleteGlobalSeo?: Maybe<GlobalSeoEntityResponse>;
   deleteHomePage?: Maybe<HomePageEntityResponse>;
+  deleteOrder?: Maybe<OrderEntityResponse>;
   deleteProduct?: Maybe<ProductEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -486,6 +519,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updateGlobalSeo?: Maybe<GlobalSeoEntityResponse>;
   updateHomePage?: Maybe<HomePageEntityResponse>;
+  updateOrder?: Maybe<OrderEntityResponse>;
   updateProduct?: Maybe<ProductEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -526,6 +560,11 @@ export type MutationCreateHomePageLocalizationArgs = {
   data?: InputMaybe<HomePageInput>;
   id?: InputMaybe<Scalars['ID']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationCreateOrderArgs = {
+  data: OrderInput;
 };
 
 
@@ -580,6 +619,11 @@ export type MutationDeleteGlobalSeoArgs = {
 
 export type MutationDeleteHomePageArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']>;
+};
+
+
+export type MutationDeleteOrderArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -680,6 +724,12 @@ export type MutationUpdateHomePageArgs = {
 };
 
 
+export type MutationUpdateOrderArgs = {
+  data: OrderInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateProductArgs = {
   data: ProductInput;
   id: Scalars['ID'];
@@ -717,6 +767,61 @@ export type MutationUploadArgs = {
   info?: InputMaybe<FileInfoInput>;
   ref?: InputMaybe<Scalars['String']>;
   refId?: InputMaybe<Scalars['ID']>;
+};
+
+export type Order = {
+  __typename?: 'Order';
+  amount: Scalars['Float'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  item: Array<Maybe<ComponentOrderItem>>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  user?: Maybe<FastUserEntityResponse>;
+};
+
+
+export type OrderItemArgs = {
+  filters?: InputMaybe<ComponentOrderItemFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type OrderEntity = {
+  __typename?: 'OrderEntity';
+  attributes?: Maybe<Order>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type OrderEntityResponse = {
+  __typename?: 'OrderEntityResponse';
+  data?: Maybe<OrderEntity>;
+};
+
+export type OrderEntityResponseCollection = {
+  __typename?: 'OrderEntityResponseCollection';
+  data: Array<OrderEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type OrderFiltersInput = {
+  amount?: InputMaybe<FloatFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<OrderFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  user?: InputMaybe<FastUserFiltersInput>;
+};
+
+export type OrderInput = {
+  amount?: InputMaybe<Scalars['Float']>;
+  item?: InputMaybe<Array<InputMaybe<ComponentOrderItemInput>>>;
+  user?: InputMaybe<Scalars['ID']>;
+};
+
+export type OrderRelationResponseCollection = {
+  __typename?: 'OrderRelationResponseCollection';
+  data: Array<OrderEntity>;
 };
 
 export type Pagination = {
@@ -832,6 +937,8 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  order?: Maybe<OrderEntityResponse>;
+  orders?: Maybe<OrderEntityResponseCollection>;
   product?: Maybe<ProductEntityResponse>;
   products?: Maybe<ProductEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
@@ -888,6 +995,18 @@ export type QueryI18NLocaleArgs = {
 
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryOrderArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryOrdersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1355,6 +1474,18 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type CategoriesSearchQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CategoriesSearchQuery = { __typename?: 'Query', categories?: { __typename?: 'CategoryEntityResponseCollection', data: Array<{ __typename?: 'CategoryEntity', attributes?: { __typename?: 'Category', slug: string, name: string } | null }> } | null };
+
+export type FavoriteProductsQueryVariables = Exact<{
+  value?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+}>;
+
+
+export type FavoriteProductsQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', price: number, description: string, slug: string, smallDescription: string, name: string, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
+
 export type GlobalSeoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1364,6 +1495,23 @@ export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', products?: { __typename?: 'ProductRelationResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', price: number, description: string, slug: string, smallDescription: string, name: string, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null, categories?: { __typename?: 'CategoryRelationResponseCollection', data: Array<{ __typename?: 'CategoryEntity', id?: string | null, attributes?: { __typename?: 'Category', name: string, slug: string, smallDescription: string, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
+
+export type ProductCartQueryVariables = Exact<{
+  value?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+}>;
+
+
+export type ProductCartQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', price: number, slug: string, smallDescription: string, name: string, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
+
+export type ProductSearchQueryVariables = Exact<{
+  i?: InputMaybe<Scalars['String']>;
+  c?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  s?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  p?: InputMaybe<FloatFilterInput>;
+}>;
+
+
+export type ProductSearchQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', price: number, description: string, slug: string, smallDescription: string, name: string, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
 
 export type ProductSlugQueryVariables = Exact<{
   value?: InputMaybe<Scalars['String']>;
@@ -1380,6 +1528,69 @@ export type SearchbarSearchQueryVariables = Exact<{
 export type SearchbarSearchQuery = { __typename?: 'Query', products?: { __typename?: 'ProductEntityResponseCollection', data: Array<{ __typename?: 'ProductEntity', id?: string | null, attributes?: { __typename?: 'Product', slug: string, smallDescription: string, name: string, images?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null }> } | null };
 
 
+export const CategoriesSearchDocument = `
+    query CategoriesSearch {
+  categories {
+    data {
+      attributes {
+        slug
+        name
+      }
+    }
+  }
+}
+    `;
+export const useCategoriesSearchQuery = <
+      TData = CategoriesSearchQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: CategoriesSearchQueryVariables,
+      options?: UseQueryOptions<CategoriesSearchQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<CategoriesSearchQuery, TError, TData>(
+      variables === undefined ? ['CategoriesSearch'] : ['CategoriesSearch', variables],
+      fetcher<CategoriesSearchQuery, CategoriesSearchQueryVariables>(client, CategoriesSearchDocument, variables, headers),
+      options
+    );
+export const FavoriteProductsDocument = `
+    query FavoriteProducts($value: [String]) {
+  products(filters: {slug: {in: $value}}, pagination: {limit: 50}) {
+    data {
+      id
+      attributes {
+        price
+        description
+        slug
+        smallDescription
+        name
+        images {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+export const useFavoriteProductsQuery = <
+      TData = FavoriteProductsQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: FavoriteProductsQueryVariables,
+      options?: UseQueryOptions<FavoriteProductsQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<FavoriteProductsQuery, TError, TData>(
+      variables === undefined ? ['FavoriteProducts'] : ['FavoriteProducts', variables],
+      fetcher<FavoriteProductsQuery, FavoriteProductsQueryVariables>(client, FavoriteProductsDocument, variables, headers),
+      options
+    );
 export const GlobalSeoDocument = `
     query GlobalSeo {
   globalSeo {
@@ -1478,6 +1689,83 @@ export const useHomePageQuery = <
       fetcher<HomePageQuery, HomePageQueryVariables>(client, HomePageDocument, variables, headers),
       options
     );
+export const ProductCartDocument = `
+    query ProductCart($value: [String]) {
+  products(filters: {slug: {in: $value}}, pagination: {limit: 50}) {
+    data {
+      id
+      attributes {
+        price
+        slug
+        smallDescription
+        name
+        images {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+export const useProductCartQuery = <
+      TData = ProductCartQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: ProductCartQueryVariables,
+      options?: UseQueryOptions<ProductCartQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<ProductCartQuery, TError, TData>(
+      variables === undefined ? ['ProductCart'] : ['ProductCart', variables],
+      fetcher<ProductCartQuery, ProductCartQueryVariables>(client, ProductCartDocument, variables, headers),
+      options
+    );
+export const ProductSearchDocument = `
+    query ProductSearch($i: String, $c: [String], $s: [String], $p: FloatFilterInput) {
+  products(
+    filters: {name: {containsi: $i}, category: {slug: {in: $c}}, price: $p}
+    pagination: {limit: 50}
+    sort: $s
+  ) {
+    data {
+      id
+      attributes {
+        price
+        description
+        slug
+        smallDescription
+        name
+        images {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+export const useProductSearchQuery = <
+      TData = ProductSearchQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: ProductSearchQueryVariables,
+      options?: UseQueryOptions<ProductSearchQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<ProductSearchQuery, TError, TData>(
+      variables === undefined ? ['ProductSearch'] : ['ProductSearch', variables],
+      fetcher<ProductSearchQuery, ProductSearchQueryVariables>(client, ProductSearchDocument, variables, headers),
+      options
+    );
 export const ProductSlugDocument = `
     query ProductSlug($value: String) {
   products(filters: {slug: {eq: $value}}, pagination: {limit: 1}) {
@@ -1529,7 +1817,7 @@ export const useProductSlugQuery = <
       options
     );
 export const SearchbarSearchDocument = `
-    query searchbarSearch($value: String) {
+    query SearchbarSearch($value: String) {
   products(filters: {name: {containsi: $value}}, pagination: {limit: 5}) {
     data {
       id
@@ -1559,7 +1847,7 @@ export const useSearchbarSearchQuery = <
       headers?: RequestInit['headers']
     ) =>
     useQuery<SearchbarSearchQuery, TError, TData>(
-      variables === undefined ? ['searchbarSearch'] : ['searchbarSearch', variables],
+      variables === undefined ? ['SearchbarSearch'] : ['SearchbarSearch', variables],
       fetcher<SearchbarSearchQuery, SearchbarSearchQueryVariables>(client, SearchbarSearchDocument, variables, headers),
       options
     );

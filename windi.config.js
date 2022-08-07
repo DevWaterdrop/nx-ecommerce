@@ -12,6 +12,13 @@ export function createConfig(includeOptions = []) {
   });
 
   return defineConfig({
+    theme: {
+      extend: {
+        screens: {
+          xs: '545px',
+        },
+      },
+    },
     extract: {
       include,
       exclude: ['node_modules', '.git', '.next'],

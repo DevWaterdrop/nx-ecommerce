@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 import { useState } from 'react';
-import { ITEM, ITEM_SECOND } from '../../props/constants';
+import { SEARCHBAR_ITEM } from '../../props/constants';
 import { Searchbar, SearchbarProps } from './searchbar';
 
 export default {
@@ -29,5 +29,5 @@ const Template: Story<SearchbarProps> = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  items: [ITEM, ITEM_SECOND],
+  items: [SEARCHBAR_ITEM],
 };
