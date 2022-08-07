@@ -12,7 +12,7 @@ interface Props {
   globalSeo: GlobalSeo;
 }
 
-export const getStaticProps = propsWithGlobalSeo();
+export const getServerSideProps = propsWithGlobalSeo();
 
 export const Index: React.FC<Props> = ({ globalSeo }) => {
   const favoritesValue = useAtomValue(favoritesAtom);
