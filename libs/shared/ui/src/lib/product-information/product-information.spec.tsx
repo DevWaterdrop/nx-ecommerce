@@ -3,6 +3,7 @@ import {
   render,
   RenderResult,
   screen,
+  waitFor,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -50,6 +51,9 @@ describe('ProductInformation', () => {
 
     expect(screen.queryByText(content)).not.toBeInTheDocument();
     fireEvent.click(specificItemButton);
-    expect(screen.queryByText(content)).toBeInTheDocument();
+
+    await waitFor(() =>
+      expect(screen.queryByText(content)).toBeInTheDocument()
+    );
   });
 });

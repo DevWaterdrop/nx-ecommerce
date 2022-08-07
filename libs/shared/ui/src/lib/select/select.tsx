@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react';
 import { useClickOutside } from '@nx-ecommerce/shared/utils/use-click-outside';
 import { Button } from './local-components/button';
-import { Dropdown } from './local-components/dropdown';
+import type { Props as DropdownProps } from './local-components/dropdown';
+import dynamic from 'next/dynamic';
 
 export type Item = { label: string; value: string };
 export type ItemMap = Map<Item['value'], string>;
@@ -62,6 +63,10 @@ function createSelected(prev: Item | ItemMap | null, item: Item) {
   return item;
 }
 
+const LazyDropdown = dynamic<DropdownProps>(() =>
+  import('./local-components/dropdown').then(({ Dropdown }) => Dropdown)
+);
+
 export const Select: React.FC<SelectProps> = (props) => {
   const {
     items,
@@ -99,7 +104,7 @@ export const Select: React.FC<SelectProps> = (props) => {
         selected={selected}
       />
       {open && (
-        <Dropdown
+        <LazyDropdown
           handleItemChange={handleItemChange}
           items={items}
           selected={selected}
