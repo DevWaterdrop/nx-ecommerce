@@ -1,11 +1,16 @@
+import dynamic from 'next/dynamic';
 import clsx from 'clsx';
-import { SearchbarItem } from '../../searchbar-item';
 import type { Items } from '../searchbar';
+import type { SearchbarItemProps } from '../../searchbar-item';
 
 interface Props {
   items: Items;
   setFocus: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const LazySearchbarItem = dynamic<SearchbarItemProps>(() =>
+  import('../../searchbar-item').then(({ SearchbarItem }) => SearchbarItem)
+);
 
 export const List: React.FC<Props> = (props) => {
   const { setFocus, items } = props;
@@ -24,7 +29,7 @@ export const List: React.FC<Props> = (props) => {
             {items.map(
               (item) =>
                 item.attributes && (
-                  <SearchbarItem
+                  <LazySearchbarItem
                     key={item.id}
                     item={item.attributes}
                     handleClick={() => setFocus(false)}

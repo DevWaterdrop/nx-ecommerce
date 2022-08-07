@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { Item, ItemMap } from '../select';
 
-interface Props {
+export interface Props {
   selected: Item | ItemMap | null;
   items: Item[];
   handleItemChange: (item: Item) => void;

@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import arrowRightBlackSVG from '../../../assets/icons/arrow-right-black.svg';
-import { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import React, { useState } from 'react';
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
+import type { Props as ContentProps } from './content';
 
 interface Props {
   data: {
@@ -10,6 +11,10 @@ interface Props {
     content: string;
   };
 }
+
+const LazyContent = dynamic<ContentProps>(() =>
+  import('./content').then(({ Content }) => Content)
+);
 
 export const Item: React.FC<Props> = (props) => {
   const { data } = props;
@@ -40,11 +45,7 @@ export const Item: React.FC<Props> = (props) => {
           <Image src={arrowRightBlackSVG} layout="fill" alt="" />
         </div>
       </button>
-      {open && (
-        <div className="mt-4">
-          <ReactMarkdown>{data.content}</ReactMarkdown>
-        </div>
-      )}
+      {open && <LazyContent content={data.content} />}
     </li>
   );
 };
