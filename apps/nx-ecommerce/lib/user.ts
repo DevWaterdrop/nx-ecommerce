@@ -4,19 +4,11 @@ import {
   FastUserEntityResponseCollection,
 } from '@nx-ecommerce/shared/graphql/types';
 import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
-
-const fullAccessToken = process.env['NX_FULL_ACCESS_TOKEN'];
-const init: RequestInit = {
-  mode: 'cors',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${fullAccessToken}`,
-  },
-};
+import { init } from './strapi';
 
 export const check = async (token: string) => {
   const { data }: FastUserEntityResponseCollection = await fetch(
-    getStrapiURL(`/api/fast-users?filters[token][$eq]=${token}`),
+    getStrapiURL(`/api/fast-users?filters[token][$eq]=${token}&populate=deep`),
     { ...init }
   ).then((res) => res.json());
 
@@ -35,8 +27,8 @@ export const create = async () => {
     }
   ).then((res) => res.json());
 
-  if (!data?.attributes?.token) throw new Error();
-  return data.attributes.token;
+  if (!data || !data.id || !data.attributes?.token) throw new Error();
+  return { token: data.attributes.token, id: data.id };
 };
 
 export const user = {

@@ -46,8 +46,10 @@ describe('ItemCard', () => {
     const figcaption = screen.getByText(name);
     expect(figcaption).not.toHaveClass('underline');
 
-    const buttonCart = screen.getByRole('button', { name: 'add to cart' });
-    expect(buttonCart).toHaveClass('sm:(opacity-0)');
+    const buttonCartContainer = screen.getByRole('button', {
+      name: 'add to cart',
+    }).parentElement;
+    expect(buttonCartContainer).toHaveClass('sm:(opacity-0)');
 
     const buttonFavorite = screen.getByRole('button', {
       name: 'add to favorite',
@@ -60,7 +62,7 @@ describe('ItemCard', () => {
     fireEvent.mouseOver(container);
 
     expect(figcaption).toHaveClass('underline');
-    expect(buttonCart).not.toHaveClass('sm:(opacity-0)');
+    expect(buttonCartContainer).not.toHaveClass('sm:(opacity-0)');
     expect(buttonFavorite).not.toHaveClass('sm:(opacity-0)');
     expect(secondImage).toHaveClass('opacity-100');
   });

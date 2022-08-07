@@ -1,11 +1,13 @@
 import shoppingCartSVG from '../../assets/icons/shopping-cart.svg';
 import heartSVG from '../../assets/icons/heart.svg';
+import heartFilledSVG from '../../assets/icons/heart-filled.svg';
 import userSVG from '../../assets/icons/user.svg';
 import shoppingCartBlackSVG from '../../assets/icons/shopping-cart-black.svg';
 import arrowRightSVG from '../../assets/icons/arrow-right.svg';
+import arrowRightBlackSVG from '../../assets/icons/arrow-right-black.svg';
 import Image from 'next/image';
 import clsx from 'clsx';
-import { Spinner } from './components/spinner';
+import { Spinner } from './local-components/spinner';
 
 export interface IconProps {
   icon?: keyof typeof ICONS;
@@ -18,8 +20,10 @@ export const ICONS = {
   cart: shoppingCartSVG,
   cartBlack: shoppingCartBlackSVG,
   heart: heartSVG,
+  heartFilled: heartFilledSVG,
   user: userSVG,
   arrowRight: arrowRightSVG,
+  arrowRightBlack: arrowRightBlackSVG,
 } as const;
 
 const SIZES = ['sm', 'base', 'lg'] as const;
@@ -30,7 +34,9 @@ export const Icon: React.FC<IconProps> = (props: IconProps) => {
   return (
     <div
       className={clsx(
-        'flex relative select-none pointer-events-none items-center',
+        'relative',
+        'flex items-center',
+        'select-none pointer-events-none',
         // SIZES
         size === 'sm' && 'h-4 w-4  sm:(h-6 w-6)',
         size === 'base' && 'h-5 w-5',

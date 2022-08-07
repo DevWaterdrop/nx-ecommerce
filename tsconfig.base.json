@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-ecommerce/apps/nx-ecommerce/*": ["apps/nx-ecommerce/*"],
       "@nx-ecommerce/shared/graphql/*": ["libs/shared/graphql/src/*"],
       "@nx-ecommerce/shared/ui-props/*": ["libs/shared/ui/src/props/*"],
       "@nx-ecommerce/shared/ui/*": ["libs/shared/ui/src/lib/*"],

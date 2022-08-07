@@ -2,14 +2,14 @@ import clsx from 'clsx';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-auto bg-gray-100 mt-20 w-full">
+    <footer className={clsx('mt-20 w-full', 'bg-gray-100')}>
       <div
         className={clsx(
           'mx-auto max-w-screen-xl py-8 px-4',
           'flex gap-8 items-center justify-between'
         )}
       >
-        <p className="text-base">
+        <p className="text-base select-none">
           <span aria-label="flag of Ukraine" role="img">
             🇺🇦
           </span>
@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
             🇺🇦
           </span>
         </p>
-        <ul className="flex text-xs opacity-40 gap-4 not-italic">
+        <ul className={clsx('flex gap-4', 'text-xs not-italic', 'opacity-40')}>
           <li>
             <a
               className="hover:underline"
