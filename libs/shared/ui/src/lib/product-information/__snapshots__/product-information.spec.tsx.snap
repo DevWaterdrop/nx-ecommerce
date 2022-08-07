@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductInformation should render successfully 1`] = `
+<ul>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title1
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title2
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title3
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title4
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title5
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title6
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title7
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title8
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title9
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+  <li
+    className="w-full py-8 flex flex-col border-t"
+  >
+    <button
+      className="flex justify-between items-center text-3xl  font-semibold cursor-pointer hover:(underline)"
+      onClick={[Function]}
+      type="button"
+    >
+      Title10
+      <div
+        aria-hidden="true"
+        className="h-8 w-8 relative transition-transform transform"
+      >
+        Next image stub
+      </div>
+    </button>
+  </li>
+</ul>
+`;

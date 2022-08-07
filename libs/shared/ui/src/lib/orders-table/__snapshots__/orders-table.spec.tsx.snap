@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersTable should render successfully 1`] = `
+<table
+  className="min-w-full divide-y border divide-gray-300"
+>
+  <thead
+    className="bg-gray-50"
+  >
+    <tr
+      className="divide-x divide-gray-200"
+    >
+      <td
+        className="py-3.5 pr-4 pl-4 font-semibold text-left text-sm sm:(pl-6)"
+      >
+        Products
+      </td>
+      <td
+        className="py-3.5 pr-4 pl-4 font-semibold text-left text-sm sm:(pr-6)"
+      >
+        Total
+      </td>
+    </tr>
+  </thead>
+  <tbody
+    className="divide-y bg-white divide-gray-200"
+  >
+    <tr
+      className="divide-x divide-gray-200"
+    >
+      <td
+        className="py-4 pr-4 pl-4 font-medium text-sm whitespace-nowrap sm:(pl-6)"
+      >
+        <ul
+          className="flex flex-col gap-1"
+        >
+          <li
+            className="py-2 flex gap-4 items-center border-b"
+          >
+            <span>
+              1
+            </span>
+            <a
+              className="text-sky-600 uppercase hover:(underline)"
+              href="/i/slug-flower"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              Flower
+            </a>
+          </li>
+        </ul>
+      </td>
+      <td
+        className="py-4 pr-4 pl-4 w-4 font-medium text-xl whitespace-nowrap sm:(pr-6)"
+      >
+        50.00$
+      </td>
+    </tr>
+    <tr
+      className="divide-x divide-gray-200"
+    >
+      <td
+        className="py-4 pr-4 pl-4 font-medium text-sm whitespace-nowrap sm:(pl-6)"
+      >
+        <ul
+          className="flex flex-col gap-1"
+        >
+          <li
+            className="py-2 flex gap-4 items-center border-b"
+          >
+            <span>
+              2
+            </span>
+            <a
+              className="text-sky-600 uppercase hover:(underline)"
+              href="/i/slug-flower"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+            >
+              Flower
+            </a>
+          </li>
+        </ul>
+      </td>
+      <td
+        className="py-4 pr-4 pl-4 w-4 font-medium text-xl whitespace-nowrap sm:(pr-6)"
+      >
+        100.00$
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

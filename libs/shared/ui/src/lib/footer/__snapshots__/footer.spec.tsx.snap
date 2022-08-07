@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render successfully 1`] = `
+<footer
+  className="mt-20 w-full bg-gray-100"
+>
+  <div
+    className="mx-auto max-w-screen-xl py-8 px-4 flex gap-8 items-center justify-between"
+  >
+    <p
+      className="text-base select-none"
+    >
+      <span
+        aria-label="flag of Ukraine"
+        role="img"
+      >
+        🇺🇦
+      </span>
+       STOP WAR 
+      <span
+        aria-label="flag of Ukraine"
+        role="img"
+      >
+        🇺🇦
+      </span>
+    </p>
+    <ul
+      className="flex gap-4 text-xs not-italic opacity-40"
+    >
+      <li>
+        <a
+          className="hover:underline"
+          href="https://github.com/DevWaterdrop/nx-ecommerce"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          Github
+        </a>
+      </li>
+      <li>
+        <a
+          className="hover:underline"
+          href="https://github.com/DevWaterdrop"
+          rel="author noreferrer noopener"
+          target="_blank"
+        >
+          DevWaterdrop
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+`;

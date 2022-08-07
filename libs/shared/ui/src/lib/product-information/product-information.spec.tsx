@@ -5,6 +5,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { ProductInformation } from './product-information';
@@ -31,6 +32,12 @@ describe('ProductInformation', () => {
 
   it('should render successfully', () => {
     const { baseElement } = renderResult;
+
+    const tree = renderer
+      .create(<ProductInformation {...PRODUCT_INFORMATION_DEFAULT_PROPS} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(baseElement).toBeTruthy();
   });
 

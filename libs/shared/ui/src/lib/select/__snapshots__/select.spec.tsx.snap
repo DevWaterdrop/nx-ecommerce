@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select should render successfully 1`] = `
+<div
+  className="rotate relative"
+>
+  <button
+    className="py-2.5 px-6 flex items-end gap-2 bg-gray-100 text-sm font-medium rounded-full border border-transparent border-black"
+    onClick={[Function]}
+    type="button"
+  >
+    Select
+    <div
+      aria-hidden="true"
+      className="h-4.5 w-4.5 relative transition-transform transform-gpu"
+    >
+      Next image stub
+    </div>
+  </button>
+</div>
+`;

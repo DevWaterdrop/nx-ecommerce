@@ -1,4 +1,5 @@
 import { render, RenderResult, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { ProductGallery } from './product-gallery';
@@ -15,6 +16,12 @@ describe('ProductGallery', () => {
 
   it('should render successfully', () => {
     const { baseElement } = renderResult;
+
+    const tree = renderer
+      .create(<ProductGallery {...PRODUCT_GALLERY_DEFAULT_PROPS} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(baseElement).toBeTruthy();
   });
 

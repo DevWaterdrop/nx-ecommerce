@@ -1,4 +1,5 @@
 import { render, RenderResult } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { SELECT_DEFAULT_PROPS } from '../../props/constants';
@@ -13,6 +14,10 @@ describe('Select', () => {
 
   it('should render successfully', () => {
     const { baseElement } = renderResult;
+
+    const tree = renderer.create(<Select {...SELECT_DEFAULT_PROPS} />).toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(baseElement).toBeTruthy();
   });
 

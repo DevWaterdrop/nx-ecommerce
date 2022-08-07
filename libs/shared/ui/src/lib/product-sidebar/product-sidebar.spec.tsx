@@ -1,4 +1,5 @@
 import { render, RenderResult, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { ProductSidebar } from './product-sidebar';
@@ -16,6 +17,12 @@ describe('ProductSidebar', () => {
 
   it('should render successfully', () => {
     const { baseElement } = renderResult;
+
+    const tree = renderer
+      .create(<ProductSidebar {...PRODUCT_SIDEBAR_DEFAULT_PROPS} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(baseElement).toBeTruthy();
   });
 

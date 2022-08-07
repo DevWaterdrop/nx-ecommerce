@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavButton should render successfully 1`] = `
+<a
+  className="inline-block cursor-pointer transform-gpu transition-all active:scale-92 rounded-full p-3 hover:(bg-gray-100) active:(bg-gray-300)"
+  href="/favorite"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  title="favorite page"
+>
+  <div
+    aria-hidden="true"
+    className="relative flex items-center select-none pointer-events-none h-5 w-5"
+  >
+    Next image stub
+  </div>
+</a>
+`;

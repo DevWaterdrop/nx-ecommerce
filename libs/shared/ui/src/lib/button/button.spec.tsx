@@ -1,5 +1,6 @@
 import { BUTTON_DEFAULT_PROPS } from '../../props/constants';
 import { render, RenderResult, screen } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
 
 import { Button } from './button';
@@ -14,6 +15,10 @@ describe('Button', () => {
 
   it('should render successfully', () => {
     const { baseElement } = renderResult;
+
+    const tree = renderer.create(<Button {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
+
     expect(baseElement).toBeTruthy();
   });
 
