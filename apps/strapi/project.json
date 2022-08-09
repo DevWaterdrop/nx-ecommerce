@@ -21,6 +21,12 @@
             "command": "cd apps/strapi && npm run develop"
           }
         ]
+      },
+      "defaultConfiguration": "development",
+      "configurations": {
+        "development": {
+          "envFile": ".env.development"
+        }
       }
     },
     "start": {
@@ -41,10 +47,6 @@
             "command": "cd apps/strapi && npm ci --force && npm run build"
           }
         ]
-      },
-      "defaultConfiguration": "production",
-      "configurations": {
-        "production": {}
       }
     },
     "build-naked": {
@@ -55,10 +57,6 @@
             "command": "cd apps/strapi && npm run build"
           }
         ]
-      },
-      "defaultConfiguration": "production",
-      "configurations": {
-        "production": {}
       }
     }
   },

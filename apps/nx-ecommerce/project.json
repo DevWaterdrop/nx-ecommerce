@@ -6,25 +6,30 @@
     "build": {
       "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
         "root": "apps/nx-ecommerce",
         "outputPath": "dist/apps/nx-ecommerce"
       },
+      "defaultConfiguration": "development",
       "configurations": {
-        "production": {}
+        "production": {},
+        "development": {}
       }
     },
     "serve": {
       "executor": "@nrwl/next:server",
       "options": {
-        "buildTarget": "nx-ecommerce:build",
-        "dev": true
+        "buildTarget": "nx-ecommerce:build"
       },
+      "defaultConfiguration": "development",
       "configurations": {
         "production": {
           "buildTarget": "nx-ecommerce:build:production",
           "dev": false
+        },
+        "development": {
+          "buildTarget": "nx-ecommerce:build:development",
+          "dev": true
         }
       }
     },
