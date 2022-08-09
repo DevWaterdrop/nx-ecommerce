@@ -2,7 +2,6 @@ import { Layout } from '../components/Layout';
 import { propsWithGlobalSeo } from '../utils/props-with-global-seo';
 import { withGlobalSeo } from '../hocs/with-global-seo';
 import { GlobalSeo } from '../utils/get-global-seo';
-import { propsWithAuth } from '../utils/props-with-auth';
 import { Cart } from '../scenes/Cart';
 import { client } from '../lib/client';
 import { useProductCartQuery } from '@nx-ecommerce/shared/graphql/types';
@@ -13,7 +12,7 @@ interface Props {
   globalSeo: GlobalSeo;
 }
 
-export const getServerSideProps = propsWithAuth(propsWithGlobalSeo());
+export const getServerSideProps = propsWithGlobalSeo();
 
 export const Index: React.FC<Props> = ({ globalSeo }) => {
   const cartValue = useAtomValue(cartAtom);
