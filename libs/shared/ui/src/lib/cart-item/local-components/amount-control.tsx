@@ -1,4 +1,7 @@
 import clsx from 'clsx';
+import Image from 'next/image';
+import minusSVG from '../../../assets/icons/minus.svg';
+import plusSVG from '../../../assets/icons/plus.svg';
 
 interface Props {
   inCartAmount: number;
@@ -13,17 +16,25 @@ export const AmountControl: React.FC<Props> = (props) => {
     <div className={clsx('h-8', 'flex')}>
       <button
         className={clsx(
-          'h-full w-8 relative',
+          'h-full w-8 relative group',
           'flex items-center justify-center',
           'border rounded-l-xl',
-          'text-semibold text-xl',
           'transition',
           'hover:(bg-black text-white border-black)'
         )}
         onClick={handleCartMinusClick}
         type="button"
+        title="remove 1 item"
       >
-        <span className="pb-0.75">-</span>
+        <div
+          className={clsx(
+            'h-1/2 w-1/2 relative',
+            'group-hover:(filter invert brightness-0)'
+          )}
+          aria-hidden="true"
+        >
+          <Image src={minusSVG} alt="" layout="fill" />
+        </div>
       </button>
       <span
         className={clsx(
@@ -36,16 +47,25 @@ export const AmountControl: React.FC<Props> = (props) => {
       </span>
       <button
         className={clsx(
-          'h-full w-8',
+          'h-full w-8 relative group',
+          'flex items-center justify-center',
           'border rounded-r-xl',
-          'text-semibold text-xl',
           'transition',
           'hover:(bg-black text-white border-black)'
         )}
         onClick={handleCartPlusClick}
         type="button"
+        title="add 1 item"
       >
-        +
+        <div
+          className={clsx(
+            'h-1/2 w-1/2 relative',
+            'group-hover:(filter invert brightness-0)'
+          )}
+          aria-hidden="true"
+        >
+          <Image src={plusSVG} alt="" layout="fill" />
+        </div>
       </button>
     </div>
   );

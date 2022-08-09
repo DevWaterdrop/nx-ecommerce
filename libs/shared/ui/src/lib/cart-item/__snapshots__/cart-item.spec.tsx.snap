@@ -47,15 +47,17 @@ exports[`CartItem should render successfully 1`] = `
         className="h-8 flex"
       >
         <button
-          className="h-full w-8 relative flex items-center justify-center border rounded-l-xl text-semibold text-xl transition hover:(bg-black text-white border-black)"
+          className="h-full w-8 relative group flex items-center justify-center border rounded-l-xl transition hover:(bg-black text-white border-black)"
           onClick={[Function]}
+          title="remove 1 item"
           type="button"
         >
-          <span
-            className="pb-0.75"
+          <div
+            aria-hidden="true"
+            className="h-1/2 w-1/2 relative group-hover:(filter invert brightness-0)"
           >
-            -
-          </span>
+            Next image stub
+          </div>
         </button>
         <span
           className="w-8 flex items-center justify-center border-t border-b"
@@ -63,11 +65,17 @@ exports[`CartItem should render successfully 1`] = `
           1
         </span>
         <button
-          className="h-full w-8 border rounded-r-xl text-semibold text-xl transition hover:(bg-black text-white border-black)"
+          className="h-full w-8 relative group flex items-center justify-center border rounded-r-xl transition hover:(bg-black text-white border-black)"
           onClick={[Function]}
+          title="add 1 item"
           type="button"
         >
-          +
+          <div
+            aria-hidden="true"
+            className="h-1/2 w-1/2 relative group-hover:(filter invert brightness-0)"
+          >
+            Next image stub
+          </div>
         </button>
       </div>
       <div
