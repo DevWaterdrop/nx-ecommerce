@@ -9,7 +9,7 @@ export const Content: React.FC<Props> = (props) => {
 
   return (
     <div className="mt-4">
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <ReactMarkdown className="whitespace-pre-wrap">{content}</ReactMarkdown>
     </div>
   );
 };
