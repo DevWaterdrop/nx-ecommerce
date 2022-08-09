@@ -3,6 +3,8 @@ const withNx = require('@nrwl/next/plugins/with-nx');
 const WindiCSSWebpackPlugin = require('windicss-webpack-plugin');
 const dotenv = require('dotenv');
 
+const IMAGE_DOMAIN = process.env.IMAGE_DOMAIN;
+
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
@@ -21,7 +23,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['localhost'],
+    domains: IMAGE_DOMAIN ? [IMAGE_DOMAIN] : ['localhost'],
   },
 };
 
