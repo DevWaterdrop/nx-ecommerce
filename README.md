@@ -4,7 +4,6 @@ Todo for README:
 
 - [ ] Preview
 - [ ] Finish Stack section (add Deploy)
-- [ ] Local setup guide
 
 ## About
 
@@ -25,3 +24,27 @@ If I knew that before, I would go for the T3 stack:<br>TypeScript, Next.js, tRPC
 **Back:** Strapi with Graphql (`codegen`, `graphql-request`);
 
 **Testing:** React Testing Library / Jest, Cypress.
+
+## Local setup guide
+
+First of all run – `npm ci`.
+
+### Back (Strapi)
+
+1. Build: `npm run docker-build`.
+2. Run: `npm run docker`
+
+**STRAPI DEV USER:**
+| User | Password |
+| ----- | -------- |
+| fake@not_exist_mail.com | Deve1oper |
+
+### Front (NextJS)
+
+Running back end instance is mandatory!
+
+```bash
+npm run local-nextjs
+# or
+nx run nx-ecommerce:serve:development
+```
