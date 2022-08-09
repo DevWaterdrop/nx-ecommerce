@@ -1,10 +1,15 @@
-import { CategoryCard } from '@nx-ecommerce/shared/ui/category-card';
+import {
+  CategoryCard,
+  type CategoryCardProps,
+} from '@nx-ecommerce/shared/ui/category-card';
 import clsx from 'clsx';
 import type { GetHomePageData } from '../Home';
 
 interface Props {
   categories: GetHomePageData<'categories'>;
 }
+
+const COLORS = ['yellow', 'blue', 'green'] as CategoryCardProps['color'][];
 
 export const CategoriesSection: React.FC<Props> = (props) => {
   const { categories } = props;
@@ -19,7 +24,7 @@ export const CategoriesSection: React.FC<Props> = (props) => {
         )}
       >
         {categories.data.map(
-          (category) =>
+          (category, index) =>
             category.attributes && (
               <li
                 className={clsx(
@@ -29,7 +34,10 @@ export const CategoriesSection: React.FC<Props> = (props) => {
                 )}
                 key={category.id}
               >
-                <CategoryCard category={category.attributes} />
+                <CategoryCard
+                  category={category.attributes}
+                  color={COLORS[index % COLORS.length]}
+                />
               </li>
             )
         )}

@@ -9,10 +9,11 @@ import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
 
 export interface CategoryCardProps {
   category: Category;
+  color?: 'yellow' | 'green' | 'blue';
 }
 
 export const CategoryCard: React.FC<CategoryCardProps> = (props) => {
-  const { category } = props;
+  const { category, color = 'blue' } = props;
 
   const { smallDescription, image, slug } = category;
 
@@ -47,7 +48,9 @@ export const CategoryCard: React.FC<CategoryCardProps> = (props) => {
           className={clsx(
             'p-5',
             'flex flex-col flex-1 gap-4',
-            'bg-blue-400',
+            color === 'blue' && 'bg-blue-400',
+            color === 'green' && 'bg-green-400',
+            color === 'yellow' && 'bg-yellow-400',
             'sm:(p-8 gap-8)'
           )}
         >
