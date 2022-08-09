@@ -15,7 +15,6 @@ export const UserWrap: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (!userValue) {
-      console.log(1);
       fetch(getBaseURL('/api/user'))
         .then((res) => res.json())
         .then(({ token, orders, id }) => {
