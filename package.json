@@ -8,7 +8,10 @@
     "test": "nx test",
     "generate": "graphql-codegen --config codegen.yml",
     "format": "npx prettier --write .",
-    "check": "npx prettier --check ."
+    "check": "npx prettier --check .",
+    "docker-build": "docker build -f ./Dockerfile . -t strapi",
+    "docker": "docker-compose up",
+    "local-nextjs": "nx run nx-ecommerce:serve"
   },
   "private": true,
   "dependencies": {
@@ -65,6 +68,7 @@
     "babel-jest": "27.2.3",
     "babel-loader": "8.1.0",
     "cypress": "^9.1.0",
+    "dotenv": "^16.0.1",
     "eslint": "~8.12.0",
     "eslint-config-next": "12.1.2",
     "eslint-config-prettier": "8.1.0",
