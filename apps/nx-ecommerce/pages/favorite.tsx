@@ -17,13 +17,13 @@ export const getServerSideProps = propsWithGlobalSeo();
 export const Index: React.FC<Props> = ({ globalSeo }) => {
   const favoritesValue = useAtomValue(favoritesAtom);
 
-  const { data } = useFavoriteProductsQuery(client, {
+  const { data, status } = useFavoriteProductsQuery(client, {
     value: [...favoritesValue],
   });
 
   return (
     <Layout defaultSeo={globalSeo}>
-      <Favorite products={data} />
+      <Favorite products={data} status={status} />
     </Layout>
   );
 };

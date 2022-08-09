@@ -17,13 +17,13 @@ export const getServerSideProps = propsWithGlobalSeo();
 export const Index: React.FC<Props> = ({ globalSeo }) => {
   const cartValue = useAtomValue(cartAtom);
 
-  const { data } = useProductCartQuery(client, {
+  const { data, status } = useProductCartQuery(client, {
     value: [...cartValue.keys()],
   });
 
   return (
     <Layout defaultSeo={globalSeo}>
-      <Cart products={data} />
+      <Cart products={data} status={status} />
     </Layout>
   );
 };

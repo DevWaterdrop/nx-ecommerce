@@ -7,13 +7,15 @@ import { CartSidebar } from '@nx-ecommerce/shared/ui/cart-sidebar';
 import { useRouter } from 'next/router';
 import { List } from './local-components/List';
 import clsx from 'clsx';
+import { QueryStatus } from 'react-query';
 
 interface Props {
   products?: ProductCartQuery;
+  status: QueryStatus;
 }
 
 export const Cart: React.FC<Props> = (props) => {
-  const { products } = props;
+  const { products, status } = props;
 
   const [loading, setLoading] = useState(false);
 
@@ -75,7 +77,9 @@ export const Cart: React.FC<Props> = (props) => {
   return (
     <section>
       <h1 className="font-semibold mb-4 text-3xl">Shopping Bag</h1>
-      {products && products.products?.data.length ? (
+      {status === 'loading' || !products ? (
+        <small className="text-xs">Waiting...</small>
+      ) : products.products?.data.length ? (
         <div className={clsx('flex flex-col gap-24', 'md:(flex-row)')}>
           <List products={products.products.data} cartValue={cartValue} />
           <CartSidebar
