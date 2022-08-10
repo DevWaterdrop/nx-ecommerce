@@ -21,7 +21,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['localhost', 'nx-ecommerce-strapi.herokuapp.com'],
+    domains: ['localhost'],
   },
 };
 
