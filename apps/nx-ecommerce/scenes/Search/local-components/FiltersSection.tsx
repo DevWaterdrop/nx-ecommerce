@@ -40,8 +40,9 @@ export const FilterSection: React.FC<Props> = (props) => {
     <section
       className={clsx(
         'mb-8 py-4 top-0 z-10 sticky',
-        'flex flex-wrap gap-4',
-        'bg-white border-b'
+        'flex flex-wrap gap-2',
+        'bg-white border-b',
+        'sm:(gap-4)'
       )}
     >
       <Select
@@ -55,6 +56,10 @@ export const FilterSection: React.FC<Props> = (props) => {
         items={PRICES}
         onChange={(item) => handleChange('p', item)}
         initial={router.query['p']}
+        alignClasses={clsx(
+          'left-1/2 transform -translate-x-1/2',
+          'sm:(left-0 translate-x-0)'
+        )}
       />
       <Select
         placeholder="Category"
@@ -62,6 +67,11 @@ export const FilterSection: React.FC<Props> = (props) => {
         onChange={(item) => handleChange('c', item)}
         multiple
         initial={router.query['c']}
+        alignClasses={clsx(
+          'left-0',
+          '350px:(right-0 left-auto)',
+          'sm:(right-auto left-0)'
+        )}
       />
     </section>
   );

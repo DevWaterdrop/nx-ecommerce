@@ -18,11 +18,12 @@ export const Button: React.FC<Props> = (props) => {
   return (
     <button
       className={clsx(
-        'py-2.5 px-6',
+        'py-2.5 px-4',
         'flex items-end gap-2',
         'bg-gray-100',
         'text-sm font-medium',
         'rounded-full border border-transparent',
+        'sm:(px-6)',
         (selected instanceof Map ? selected.size > 0 : selected !== null) &&
           'border-black'
       )}

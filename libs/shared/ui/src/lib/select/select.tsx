@@ -15,6 +15,7 @@ export interface SelectProps {
   initial?: string | string[];
   placeholder?: string;
   multiple?: boolean;
+  alignClasses?: string;
 }
 
 export function createInitial(
@@ -74,6 +75,7 @@ export const Select: React.FC<SelectProps> = (props) => {
     multiple = false,
     onChange,
     initial,
+    alignClasses,
   } = props;
 
   const [selected, setSelected] = useState<SelectedState<
@@ -108,6 +110,7 @@ export const Select: React.FC<SelectProps> = (props) => {
           handleItemChange={handleItemChange}
           items={items}
           selected={selected}
+          alignClasses={alignClasses}
         />
       )}
     </div>

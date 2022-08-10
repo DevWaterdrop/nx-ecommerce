@@ -5,17 +5,19 @@ export interface Props {
   selected: Item | ItemMap | null;
   items: Item[];
   handleItemChange: (item: Item) => void;
+  alignClasses?: string;
 }
 
 export const Dropdown: React.FC<Props> = (props) => {
-  const { items, handleItemChange, selected } = props;
+  const { items, handleItemChange, selected, alignClasses } = props;
 
   return (
     <ul
       className={clsx(
-        'absolute top-13 left-0 p-4 z-20',
+        'absolute top-13 p-4 z-20 w-max',
         'flex flex-col',
-        'bg-white border rounded-md'
+        'bg-white border rounded-md',
+        alignClasses || 'left-0'
       )}
     >
       {items.map((item) => (

@@ -15,6 +15,7 @@ export function createConfig(includeOptions = []) {
     theme: {
       extend: {
         screens: {
+          '350px': '350px',
           xs: '545px',
         },
       },
