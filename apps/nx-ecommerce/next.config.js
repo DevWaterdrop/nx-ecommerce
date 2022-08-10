@@ -21,7 +21,11 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['localhost', 'nx-ecommerce-production.up.railway.app'],
+    domains: [
+      'localhost',
+      'nx-ecommerce-production.up.railway.app',
+      'res.cloudinary.com',
+    ],
   },
 };
 
