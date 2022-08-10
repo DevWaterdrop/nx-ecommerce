@@ -29,8 +29,8 @@ export const Product: React.FC<Props> = (props) => {
   return (
     <section
       className={clsx(
-        'mt-12',
         'flex flex-col gap-12 justify-between',
+        'sm:(mt-12)',
         'md:(flex-row)'
       )}
     >
