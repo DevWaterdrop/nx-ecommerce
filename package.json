@@ -9,9 +9,11 @@
     "generate": "graphql-codegen --config codegen.yml",
     "format": "npx prettier --write .",
     "check": "npx prettier --check .",
-    "local-nextjs": "nx run nx-ecommerce:serve"
+    "local-nextjs": "nx run nx-ecommerce:serve",
+    "heroku-postbuild": "nx run strapi:build"
   },
   "private": true,
+  "heroku-run-build-script": true,
   "dependencies": {
     "@nrwl/next": "13.10.5",
     "clsx": "^1.1.1",
