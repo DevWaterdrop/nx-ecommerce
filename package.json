@@ -29,6 +29,7 @@
     "react-markdown": "^8.0.3",
     "react-query": "^3.39.1",
     "regenerator-runtime": "0.13.7",
+    "strapi": "^3.6.10",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
