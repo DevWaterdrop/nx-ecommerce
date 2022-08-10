@@ -21,7 +21,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'nx-ecommerce-production.up.railway.app'],
   },
 };
 
