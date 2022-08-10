@@ -2,8 +2,8 @@ import {
   CategoriesSearchQuery,
   ProductSearchQuery,
 } from '@nx-ecommerce/shared/graphql/types';
-import { FilterSection } from './local-components/FiltersSection';
-import { ProductsSection } from './local-components/ProductsSection';
+import { Filters } from './local-components/Filters';
+import { Products } from './local-components/Products';
 
 interface Props {
   products: NonNullable<ProductSearchQuery['products']>['data'];
@@ -14,9 +14,10 @@ export const Search: React.FC<Props> = (props) => {
   const { products, categories } = props;
 
   return (
-    <div>
-      <FilterSection categories={categories} />
-      <ProductsSection products={products} />
-    </div>
+    <section>
+      <h1 className="font-semibold text-3xl">Search</h1>
+      <Filters categories={categories} />
+      <Products products={products} />
+    </section>
   );
 };

@@ -9,7 +9,7 @@ interface Props {
   categories: NonNullable<CategoriesSearchQuery['categories']>['data'];
 }
 
-export const FilterSection: React.FC<Props> = (props) => {
+export const Filters: React.FC<Props> = (props) => {
   const { categories } = props;
 
   const router = useRouter();
@@ -37,7 +37,7 @@ export const FilterSection: React.FC<Props> = (props) => {
   };
 
   return (
-    <section
+    <div
       className={clsx(
         'mb-8 py-4 top-0 z-10 sticky',
         'flex flex-wrap gap-2',
@@ -73,6 +73,6 @@ export const FilterSection: React.FC<Props> = (props) => {
           'sm:(right-auto left-0)'
         )}
       />
-    </section>
+    </div>
   );
 };
