@@ -1,6 +1,6 @@
 import { GlobalSeo } from '@nx-ecommerce/shared/graphql/types';
 import type { SimplifiedImage } from '@nx-ecommerce/shared/graphql/refactored-types';
-import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
+import { getStrapiImageURL } from '@nx-ecommerce/shared/utils/get-strapi-image-url';
 import NextHead from 'next/head';
 
 interface Props {
@@ -19,7 +19,7 @@ export const Head: React.FC<Props> = (props) => {
   const title = seo?.title || metaTitle;
   const description = seo?.description || metaDescription;
   const image =
-    seo?.image || getStrapiURL(defaultSeo.metaImage.data?.attributes?.url);
+    seo?.image || getStrapiImageURL(defaultSeo.metaImage.data?.attributes?.url);
 
   return (
     <NextHead>

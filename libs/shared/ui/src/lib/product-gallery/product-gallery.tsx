@@ -1,5 +1,5 @@
 import { ProductSlugQuery } from '@nx-ecommerce/shared/graphql/types';
-import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
+import { getStrapiImageURL } from '@nx-ecommerce/shared/utils/get-strapi-image-url';
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -30,7 +30,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = (props) => {
             >
               <Image
                 layout="fill"
-                src={getStrapiURL(image.attributes.url)}
+                src={getStrapiImageURL(image.attributes.url)}
                 objectFit="cover"
                 alt="/"
               />

@@ -1,5 +1,5 @@
 import { Product } from '@nx-ecommerce/shared/graphql/refactored-types';
-import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
+import { getStrapiImageURL } from '@nx-ecommerce/shared/utils/get-strapi-image-url';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,7 +25,7 @@ export const CoverImage: React.FC<CartItemProps> = (props) => {
         >
           {images && !!images?.data?.length && (
             <Image
-              src={getStrapiURL(images.data[0].attributes?.url)}
+              src={getStrapiImageURL(images.data[0].attributes?.url)}
               alt={name}
               layout="fill"
               objectFit="cover"

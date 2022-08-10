@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { createItemHref } from '@nx-ecommerce/shared/utils/create-item-href';
 import { SearchbarSearchQuery } from '@nx-ecommerce/shared/graphql/types';
-import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
+import { getStrapiImageURL } from '@nx-ecommerce/shared/utils/get-strapi-image-url';
 import Link from 'next/link';
 import clsx from 'clsx';
 
@@ -24,7 +24,7 @@ export const SearchbarItem: React.FC<SearchbarItemProps> = (props) => {
             <div className="bg-gray-100 h-12 w-12">
               {item.images && !!item.images?.data.length && (
                 <Image
-                  src={getStrapiURL(item.images.data[0].attributes?.url)}
+                  src={getStrapiImageURL(item.images.data[0].attributes?.url)}
                   width={48}
                   height={48}
                   objectFit="cover"
