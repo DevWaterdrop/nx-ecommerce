@@ -9,8 +9,6 @@
     "generate": "graphql-codegen --config codegen.yml",
     "format": "npx prettier --write .",
     "check": "npx prettier --check .",
-    "docker-build": "docker build -f ./Dockerfile . -t strapi",
-    "docker": "docker-compose up",
     "local-nextjs": "nx run nx-ecommerce:serve"
   },
   "private": true,
