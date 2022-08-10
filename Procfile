@@ -1,1 +1,1 @@
-web: nx run strapi:start
+web: npx nx run strapi:start
