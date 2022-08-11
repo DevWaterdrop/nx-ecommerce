@@ -5,7 +5,7 @@ import { Category } from '@nx-ecommerce/shared/graphql/refactored-types';
 import classes from './category-card.module.css';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { getStrapiURL } from '@nx-ecommerce/shared/utils/get-strapi-url';
+import { getStrapiImageURL } from '@nx-ecommerce/shared/utils/get-strapi-image-url';
 
 export interface CategoryCardProps {
   category: Category;
@@ -37,7 +37,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = (props) => {
         >
           {image && image.data && (
             <Image
-              src={getStrapiURL(image.data.attributes?.url)}
+              src={getStrapiImageURL(image.data.attributes?.url)}
               alt=""
               layout="fill"
               objectFit="cover"
