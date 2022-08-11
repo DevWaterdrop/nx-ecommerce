@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
             🇺🇦
           </span>
         </p>
-        <ul className={clsx('flex gap-4', 'text-xs not-italic', 'opacity-40')}>
+        <ul className={clsx('flex gap-4', 'text-xs not-italic', 'opacity-65')}>
           <li>
             <a
               className="hover:underline"

@@ -15,7 +15,7 @@ export interface CategoryCardProps {
 export const CategoryCard: React.FC<CategoryCardProps> = (props) => {
   const { category, color = 'blue' } = props;
 
-  const { smallDescription, image, slug } = category;
+  const { smallDescription, image, slug, name } = category;
 
   return (
     <Link href={`/s?c=${slug}`}>
@@ -62,7 +62,12 @@ export const CategoryCard: React.FC<CategoryCardProps> = (props) => {
           >
             {smallDescription}
           </h3>
-          <Button classes="w-max mt-auto" tag="button" type="black">
+          <Button
+            classes="w-max mt-auto"
+            tag="button"
+            type="black"
+            elProps={{ title: `go to ${name} category` }}
+          >
             <div
               className={clsx('h-6 w-6 relative', 'sm:(h-8 w-8)')}
               aria-hidden="true"
