@@ -1,11 +1,38 @@
 # NX E-commerce project
 
-Todo for README:
+**PREVIEW** – https://nx-ecommerce.waterdrop.dev/
 
-- [ ] Preview
-- [ ] Finish Stack section (add Deploy)
+## Table of Contents
+
+- [NX E-commerce project](#nx-e-commerce-project)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Stack](#stack)
+  - [Deployed](#deployed)
+  - [Local setup guide](#local-setup-guide)
+    - [Back (Strapi)](#back-strapi)
+    - [Front (NextJS)](#front-nextjs)
 
 ## About
+
+Small demo full-stack monorepo app that features:
+
+- Cart, favorites logic ("Jotai");
+- "Authentication" (back-end, cookie authentication);
+- Search (query string);
+- Checkout/orders logic ("back-end").
+  Literally full-featured basic E-commerce application.
+
+This project was made with the thought of:
+
+- Accessibility;
+- Best practices;
+- Semantic HTML;
+- Testing (e2e, unit...);
+- Performance (e.g. dynamic loading);
+- SEO;
+- CI/CD;
+- Docker support.
 
 I can describe this as an exhausting experience.<br/>
 Make monorepo with Strapi (with Graphql) – definitely a pain in an ass, but making it type-safe (typescript) is something on a spiritual level.<br/>
@@ -18,12 +45,18 @@ If I knew that before, I would go for the T3 stack:<br>TypeScript, Next.js, tRPC
 
 **Front:** NextJS, Storybook, React Query, Jotai;
 
-**Style:** Windicss (`clsx`*);<br/>
+**Style:** Windicss/Tailwind (`clsx`*);<br/>
 *lovely and faster alternative to `classnames`.
 
-**Back:** Strapi with Graphql (`codegen`, `graphql-request`);
+**Back:** Strapi with Graphql (`codegen`, `graphql-request`), PostgreSQL;
 
 **Testing:** React Testing Library / Jest, Cypress.
+
+## Deployed
+
+For Strapi and DB (PostgreSQL) – [Railway](https://railway.app).<br/>
+NextJS – [Vercel](https://vercel.com).<br/>
+And for images – [Cloudinary](https://cloudinary.com).
 
 ## Local setup guide
 
