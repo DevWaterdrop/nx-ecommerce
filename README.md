@@ -21,7 +21,8 @@ Small demo full-stack monorepo app that features:
 - "Authentication" (back-end, cookie authentication);
 - Search (query string);
 - Checkout/orders logic ("back-end").
-  Literally full-featured basic E-commerce application.
+
+Literally full-featured basic E-commerce application.
 
 This project was made with the thought of:
 
