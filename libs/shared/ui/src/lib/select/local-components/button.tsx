@@ -22,10 +22,11 @@ export const Button: React.FC<Props> = (props) => {
         'flex items-end gap-2',
         'bg-gray-100',
         'text-sm font-medium',
-        'rounded-full border border-transparent',
+        'rounded-full border',
         'sm:(px-6)',
-        (selected instanceof Map ? selected.size > 0 : selected !== null) &&
-          'border-black'
+        (selected instanceof Map ? selected.size > 0 : selected !== null)
+          ? 'border-black'
+          : 'border-transparent'
       )}
       type="button"
       onClick={handleClick}

@@ -5,7 +5,7 @@ exports[`Select should render successfully 1`] = `
   className="rotate relative"
 >
   <button
-    className="py-2.5 px-4 flex items-end gap-2 bg-gray-100 text-sm font-medium rounded-full border border-transparent sm:(px-6) border-black"
+    className="py-2.5 px-4 flex items-end gap-2 bg-gray-100 text-sm font-medium rounded-full border sm:(px-6) border-black"
     onClick={[Function]}
     type="button"
   >
