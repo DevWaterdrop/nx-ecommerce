@@ -1,5 +1,11 @@
 # NX E-commerce project
 
+<p float="left">
+  <img src="./.github/readme_assets/desk_1.png" width="30%"/>
+  <img src="./.github/readme_assets/desk_2.png" width="30%"/>
+  <img src="./.github/readme_assets/desk_3.png" width="30%"/>
+</p>
+
 **PREVIEW** – https://nx-ecommerce.waterdrop.dev/
 
 ## Table of Contents
