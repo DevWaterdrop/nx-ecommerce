@@ -6,8 +6,6 @@
   <img src="./.github/readme_assets/desk_3.png" width="30%"/>
 </p>
 
-**PREVIEW** – https://nx-ecommerce.waterdrop.dev/
-
 ## Table of Contents
 
 - [NX E-commerce project](#nx-e-commerce-project)
